@@ -1,5 +1,5 @@
 var template = `
-<div class="search-box">
+<div class="search-box" v-if="lunrIndex && documents">
   <input
     @input="query = $event.target.value"
     aria-label="Search"
@@ -39,7 +39,8 @@ var searchBoxComponent = Vue.extend({
             focused: false,
             focusIndex: 0,
             lunrIndex: null,
-            documents: null
+            documents: null,
+            display: true
         }
     },
     computed: {
@@ -118,43 +119,43 @@ var searchBoxComponent = Vue.extend({
           const documents = this.documents 
           // Set up lunrjs by declaring the fields we use
           // Also provide their boost level for the ranking
-          this.lunrIndex = lunr(function() {
-              this.field("title", {
-                  boost: 5
-              });
-              this.field("tags", {
-                  boost: 2
-              });
-              this.field("content");
-
-              // ref is the result item identifier (I chose the page URL)
-              this.ref("href");
-
-              for (var i = 0; i < documents.length; i++) {
-                this.add(documents[i]);
-              }
-          });
+          try {
+            this.lunrIndex = lunr(function() {
+                this.field("title", {
+                    boost: 5
+                });
+                this.field("tags", {
+                    boost: 2
+                });
+                this.field("content");
+  
+                // ref is the result item identifier (I chose the page URL)
+                this.ref("href");
+  
+                for (var i = 0; i < documents.length; i++) {
+                  this.add(documents[i]);
+                }
+            });
+          } catch (e) {
+            console.error("Error accessing lunr");
+          }
 
           // Feed lunr with each file and let lunr actually index them
-          
-          console.log('Lunr ready!');
           } else {
-          console.log('We reached our target server, but it returned an error');
+          console.error('Unable to fetch Lunr data.');
         }
       }.bind(this);
 
       request.onerror = function() {
-        console.log('There was a connection error of some sort');
+        console.error('There was a connection error of some sort');
       };
 
       request.send();
     }
-  })
+  });
 
-Vue.component('search-box', searchBoxComponent)
+Vue.component('search-box', searchBoxComponent);
 
 new Vue({
   el: '#searchbox-vue'
-})
-
-console.log('Searchbox registered')
+});
