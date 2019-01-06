@@ -136,25 +136,21 @@ var searchBoxComponent = Vue.extend({
           });
 
           // Feed lunr with each file and let lunr actually index them
-          
-          console.log('Lunr ready!');
           } else {
-          console.log('We reached our target server, but it returned an error');
+          console.error('Unable to fetch Lunr data.');
         }
       }.bind(this);
 
       request.onerror = function() {
-        console.log('There was a connection error of some sort');
+        console.error('There was a connection error of some sort');
       };
 
       request.send();
     }
-  })
+  });
 
-Vue.component('search-box', searchBoxComponent)
+Vue.component('search-box', searchBoxComponent);
 
 new Vue({
   el: '#searchbox-vue'
-})
-
-console.log('Searchbox registered')
+});
