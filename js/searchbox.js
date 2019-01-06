@@ -1,5 +1,5 @@
 var template = `
-<div class="search-box">
+<div class="search-box" v-if="lunrIndex && documents>
   <input
     @input="query = $event.target.value"
     aria-label="Search"
