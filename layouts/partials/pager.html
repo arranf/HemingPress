@@ -1,0 +1,34 @@
+<div class="page-nav">
+    <p class="inner">
+      <span
+        class="prev"
+      >
+        ←
+      {{ if .Paginator.HasPrev }}
+        <a
+          class="prev"
+          href="{{ .Paginator.Prev.URL }}"
+        >
+          Newer
+        </a>
+        {{else}}
+        Newer
+      {{ end }}
+      </span>
+      
+      <span
+        class="next"
+      >
+      {{ if .Paginator.HasNext }}
+        <a
+          href="{{ .Paginator.Next.URL }}"
+        >
+          Older
+        </a>
+        {{else}}
+        Older
+        {{ end }}
+        →
+      </span>
+    </p>
+  </div>

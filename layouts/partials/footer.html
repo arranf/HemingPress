@@ -1,0 +1,19 @@
+<div class="page-edit">
+    <div class="edit-link">
+        {{ range .Site.Params.social }}
+        <a class="footer-link" href="{{ .url }}">
+          <img src="{{ .Site.BaseURL }}/css/{{ .type  }}.svg" />
+        </a>
+        {{ end }}
+    </div>
+
+    {{ if .Lastmod }}
+    <div class="last-updated">
+      <span class="prefix">Last Updated: </span>
+      <span class="time">{{ .Lastmod.Format "2006-01-02 15:04:05" }}</span>
+    </div>
+    {{ end }}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script type="text/javascript" src="{{ .Site.BaseURL }}/js/main.js"></script>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
