@@ -99,18 +99,21 @@ module.exports = (env, argv) => {
         filename: "[name].bundle.css" ,
         chunkFilename: "[id].bundle.css"
       }),
-      new WorkboxPlugin.InjectManifest({
-        swSrc: "./src/sw.js",
-        swDest: "sw.js"
-      }),
     //   new ManifestPlugin({
     //     fileName: "../data/manifest.json",
     // //   }),
-    //   new CompressionPlugin(),
-      new CopyWebpackPlugin([{
-        from: "./src/svg/",
-        to: "./svg"
-      }]),
+      new CopyWebpackPlugin(
+        [
+          {
+            from: "./src/svg/",
+            to: "./svg"
+          },
+          {
+            from: "./src/sw.js",
+            to: "sw.js"
+          }
+        ]
+      ),
     //   new WebpackPwaManifest({
     //     filename: "manifest.json",
     //     orientation: "portrait",

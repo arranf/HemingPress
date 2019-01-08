@@ -3,10 +3,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
-<link rel="stylesheet" href="{{ .Site.BaseURL }}main.bundle.css">
-<link rel="manifest" href="{{ .Site.BaseURL }}manifest.json">
-<script type="text/javascript" defer src="{{ .Site.BaseURL }}main.bundle.js"></script>
-<script type="text/javascript" defer src="{{ .Site.BaseURL }}vendors~main.bundle.js"></script>
+<link rel="stylesheet" href="/main.bundle.css">
+<link rel="manifest" href="/manifest.json">
+<script type="text/javascript" defer src="/main.bundle.js"></script>
+<script type="text/javascript" defer src="/vendors~main.bundle.js"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {

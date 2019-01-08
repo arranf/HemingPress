@@ -2,7 +2,7 @@
     <div class="edit-link">
         {{ range .Site.Params.social }}
         <a class="footer-link" href="{{ .url }}">
-          <img src="{{ $.Site.BaseURL }}svg/{{ .type  }}.svg" alt="{{ .name }}" />
+          <img src="/svg/{{ .type  }}.svg" alt="{{ .name }}" />
         </a>
         {{ end }}
     </div>

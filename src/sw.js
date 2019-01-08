@@ -5,7 +5,7 @@ if (!workbox) {
 }
 
 // This will be auto filled in the build step
-workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
+workbox.precaching.precacheAndRoute([]);
 
 workbox.routing.registerRoute(
   /\.(?:png|jpg|jpeg)$/, 
