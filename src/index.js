@@ -2,8 +2,50 @@
 import './styles/theme.styl';
 
 import Vue from 'vue'
-// import Lunr from 'lunr'
+import { register } from 'register-service-worker'
+
+import SWUpdateEvent from './js/SWUpdateEvent'
+
 import SearchBox from './js/SearchBox.vue';
+import PopUp from './js/PopUp.vue';
+
+function registerSW() {
+    
+    register('/sw.js', {
+        ready () {
+            console.log('Service worker is active.')   
+        },
+        registered (registration) {
+            console.log('Service worker has been registered.')
+        },
+        cached (registration) {
+            console.log('Content has been cached for offline use.')
+        },
+        updatefound (registration) {
+            console.log('New content is downloading.')
+        },
+        updated (registration) {
+            new Vue({
+                el: '#popup',
+                render: h => h(
+                  PopUp, 
+                  {
+                    props: {
+                      updateEvent: new SWUpdateEvent(registration)
+                    }
+                  })
+              });
+            console.log('New content is available; please refresh.')
+        },
+        offline () {
+            console.log('Change for Service Worker')
+            console.log('No internet connection found. App is running in offline mode.')
+        },
+        error (error) {
+            console.error('Error during service worker registration:', error)
+        }
+    })
+}
 
 function showSearch() {
     new Vue({
@@ -12,7 +54,5 @@ function showSearch() {
     })
 }
 
-window.addEventListener ? 
-    window.addEventListener("load",showSearch, false) 
-    : 
-    window.attachEvent && window.attachEvent("onload",showSearch);
+registerSW();
+showSearch();
