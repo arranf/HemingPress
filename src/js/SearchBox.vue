@@ -1,5 +1,5 @@
 <template>
-  <div class="search-box" v-if="lunrIndex && documents">
+  <div class="search-box" v-if="ready">
     <input
       @input="query = $event.target.value"
       aria-label="Search"
@@ -32,6 +32,10 @@
       </li>
     </ul>
   </div>
+  <div v-else-if="loading">
+    <div class="sp sp-hydrogen no-js-hidden"></div>
+    <!-- {{ partial "loading" . }} -->
+  </div>
 </template>
 
 <script>
@@ -46,10 +50,13 @@ export default {
           focusIndex: 0,
           lunrIndex: null,
           documents: null,
-          display: true
+          loading: true,
       }
     },
     computed: {
+        ready() {
+          return this.lunrIndex && this.documents
+        },
         getCurrentHostname() {
           return window.location.protocol + '//' + window.location.host
         },
@@ -138,16 +145,17 @@ export default {
                 // ref is the result item identifier (I chose the page URL)
                 this.ref("href");
   
+                // Feed lunr with each file and let lunr actually index them
                 for (var i = 0; i < documents.length; i++) {
                   this.add(documents[i]);
                 }
             });
           } catch (e) {
+            this.loading = false;
             console.error("Error accessing lunr");
           }
-
-          // Feed lunr with each file and let lunr actually index them
           } else {
+          this.loading = false;
           console.error('Unable to fetch Lunr data.');
         }
       }.bind(this);
