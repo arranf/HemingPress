@@ -1,4 +1,4 @@
-var template = `<transition name="sw-update-popup">
+const template = `<transition name="sw-update-popup">
 <div
   class="sw-update-popup" :class=""
 >
@@ -6,7 +6,7 @@ var template = `<transition name="sw-update-popup">
   <button @click="reload">Refresh</button>
 </div>
 </transition>`;
-var popUpComponent = Vue.extend({
+const popUpComponent = Vue.extend({
     template,
     data() {
         return {

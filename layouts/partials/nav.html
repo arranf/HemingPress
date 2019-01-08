@@ -8,7 +8,9 @@
         style="max-width: 719px"
       >
         <div id="searchbox-vue">
-            <search-box></search-box>
+            <search-box>
+                {{ partial "loading" . }}
+            </search-box>
         </div>
         <nav class="nav-links can-hide">
           {{ range .Site.Params.social }}

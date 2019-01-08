@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
 <meta charset="UTF-8">
-<meta name="specificfeeds-verification-code" content="sLFXBAngCSajhlkDhEra"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/theme.css">
+<link rel="stylesheet" href="{{ .Site.BaseURL }}main.bundle.css">
 <link rel="manifest" href="{{ .Site.BaseURL }}manifest.json">
-<script crossorigin="anonymous" src="https://unpkg.com/vue@2.5.21/dist/vue.min.js"></script>
-<script crossorigin="anonymous" src="https://unpkg.com/lunr@2.3.5/lunr.js"></script>
+<script type="text/javascript" defer src="{{ .Site.BaseURL }}main.bundle.js"></script>
+<script type="text/javascript" defer src="{{ .Site.BaseURL }}vendors~main.bundle.js"></script>
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    // This is correct with the missing '/'
-    navigator.serviceWorker.register('{{ .Site.BaseURL }}sw.js');
-  });
-}
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      // This is correct with the missing '/'
+      navigator.serviceWorker.register('{{ .Site.BaseURL }}sw.js');
+    });
+  }
 </script>
+<noscript>
+  <style>
+    .no-js-hidden {
+      display: none;
+    }
+  </style>
+</noscript>
