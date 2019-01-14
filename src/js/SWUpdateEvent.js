@@ -20,15 +20,15 @@ export default class SWUpdateEvent {
     skipWaiting () {
       const worker = this.registration.waiting
       if (!worker) {
+      console.error('No waiting service worker')
         return Promise.resolve()
       }
-  
-      console.log('[vuepress:sw] Doing worker.skipWaiting().')
+    console.log('[sw] Doing worker.skipWaiting().')
       return new Promise((resolve, reject) => {
         const channel = new MessageChannel()
   
         channel.port1.onmessage = (event) => {
-          console.log('[vuepress:sw] Done worker.skipWaiting().')
+        console.log('[sw] Done worker.skipWaiting().')
           if (event.data.error) {
             reject(event.data.error)
           } else {

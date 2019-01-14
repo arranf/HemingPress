@@ -20,6 +20,7 @@ addEventListener('message', event => {
     const replyPort = event.ports[0]
     const message = event.data
     if (replyPort && message && message.type === 'skip-waiting') {
+      console.log('Received skip-waiting event')
       event.waitUntil(
         self.skipWaiting().then(
           () => replyPort.postMessage({ error: null }),

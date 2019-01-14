@@ -25,13 +25,14 @@ function registerSW() {
             console.log('New content is downloading.')
         },
         updated (registration) {
+            const updateEvent = new SWUpdateEvent(registration);
             new Vue({
                 el: '#popup',
                 render: h => h(
                   PopUp, 
                   {
                     props: {
-                      updateEvent: new SWUpdateEvent(registration)
+                      updateEvent
                     }
                   })
               });
