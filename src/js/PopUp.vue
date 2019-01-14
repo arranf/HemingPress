@@ -24,7 +24,7 @@ export default {
 
   computed: {
     enabled () {
-      return Boolean(this.updateEvent)
+      return this.updateEvent && (Object.keys(obj).length !== 0 && obj.constructor === Object)
     },
 
     message () {
@@ -38,13 +38,12 @@ export default {
 
   methods: {
     reload () {
-      if (this.updateEvent) {
+      if (this.updateEvent && this.enabled) {
         this.updateEvent.skipWaiting().then(() => {
           location.reload(true)
         })
         this.updateEvent = null
       }
-      location.reload(true)
     }
   }
 }
@@ -64,6 +63,7 @@ export default {
   background $codeBgColor
   box-shadow 0 4px 16px rgba(0, 0, 0, 0.5)
   text-align left
+  cursor pointer 
 
   p, a
     flex 1
