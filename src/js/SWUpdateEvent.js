@@ -23,19 +23,23 @@ export default class SWUpdateEvent {
       console.error('No waiting service worker')
         return Promise.resolve()
       }
-    console.log('[sw] Doing worker.skipWaiting().')
+      console.log('[sw] Doing worker.skipWaiting().')
+      console.log(worker);
+
       return new Promise((resolve, reject) => {
         const channel = new MessageChannel()
-  
+        console.log(channel);
+        
         channel.port1.onmessage = (event) => {
-        console.log('[sw] Done worker.skipWaiting().')
+          console.log('[sw] Done worker.skipWaiting().')
           if (event.data.error) {
             reject(event.data.error)
           } else {
             resolve(event.data)
           }
         }
-  
+        
+        console.log('Sending skip-waiting message');
         worker.postMessage({ type: 'skip-waiting' }, [channel.port2])
       })
     }

@@ -39,9 +39,12 @@ export default {
   methods: {
     reload () {
       if (this.updateEvent && this.enabled) {
-        this.updateEvent.skipWaiting().then(() => {
-          location.reload(true)
-        })
+        this.updateEvent.skipWaiting()
+          .then(() => {
+            console.log('Skip waiting succeeded')
+            location.reload(true)
+          })
+          .catch(e => console.error(e))
         this.updateEvent = null
       }
     }
