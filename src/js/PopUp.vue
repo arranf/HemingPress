@@ -24,7 +24,7 @@ export default {
 
   computed: {
     enabled () {
-      return this.updateEvent && (Object.keys(obj).length !== 0 && obj.constructor === Object)
+      return this.updateEvent
     },
 
     message () {
