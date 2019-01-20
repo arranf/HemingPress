@@ -1,16 +1,17 @@
 // Entry point for CSS
 import './styles/theme.styl';
 
-import Vue from 'vue'
 import { register } from 'register-service-worker'
-
 import SWUpdateEvent from './js/SWUpdateEvent'
 
-import SearchBox from './js/SearchBox.vue';
+import Vue from 'vue'
 import PopUp from './js/PopUp.vue';
+import SearchBox from './js/SearchBox.vue';
+
+// Entry point for lazysizes
+import lazysizes from "lazysizes";
 
 function registerSW() {
-    
     register('/sw.js', {
         ready () {
             console.log('Service worker is active.')   
@@ -55,5 +56,9 @@ function showSearch() {
     })
 }
 
-registerSW();
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        registerSW();
+    });
+}
 showSearch();

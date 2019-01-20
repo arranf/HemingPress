@@ -17,18 +17,14 @@
 <link rel="manifest" href="/manifest.json">
 <script type="text/javascript" defer src="/main.bundle.js"></script>
 <script type="text/javascript" defer src="/vendors~main.bundle.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      // This is correct with the missing '/'
-      navigator.serviceWorker.register('{{ .Site.BaseURL }}sw.js');
-    });
-  }
-</script>
 
 <noscript>
   <style>
     .no-js-hidden {
+      display: none;
+    }
+
+    .lazyload {
       display: none;
     }
   </style>
