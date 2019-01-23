@@ -11,6 +11,12 @@ import SearchBox from './js/SearchBox.vue';
 // Entry point for lazysizes
 import lazysizes from "lazysizes";
 
+if ('serviceWorker' in navigator) {
+    registerSW();
+}
+
+showSearch();
+
 function registerSW() {
     register('/sw.js', {
         ready () {
@@ -55,10 +61,3 @@ function showSearch() {
         render: h => h(SearchBox)
     })
 }
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        registerSW();
-    });
-}
-showSearch();
