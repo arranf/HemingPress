@@ -11,13 +11,14 @@ import SearchBox from './js/SearchBox.vue';
 // Entry point for lazysizes
 import lazysizes from "lazysizes";
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in window.navigator) {
     registerSW();
 }
 
 showSearch();
 
 function registerSW() {
+    console.log('Register SW fired');
     register('/sw.js', {
         ready () {
             console.log('Service worker is active.')   
