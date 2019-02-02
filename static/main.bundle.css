@@ -713,47 +713,80 @@ td {
   }
 }
 
-.sw-update-popup[data-v-210690d6] {
+.sw-update-popup[data-v-fdcd8e24] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: fixed;
-  right: 1em;
-  bottom: 1em;
-  padding: 1em;
-  border: 1px solid #3eaf7c;
-  border-radius: 3px;
+  left: 0;
+  bottom: 0;
+  padding: 0.65em;
+  border: none;
+  border-radius: 0px;
   background: #282c34;
   -webkit-box-shadow: 0 4px 16px rgba(0,0,0,0.5);
           box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-  text-align: left;
   cursor: pointer;
+  min-width: 100%;
 }
-.sw-update-popup p[data-v-210690d6],
-.sw-update-popup a[data-v-210690d6] {
+.sw-update-popup p[data-v-fdcd8e24],
+.sw-update-popup a[data-v-fdcd8e24] {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: 1em;
-  margin-left: 0.5em;
+  font-size: 90%;
   -ms-flex-item-align: center;
       align-self: center;
 }
-.sw-update-popup p[data-v-210690d6] {
+.sw-update-popup p[data-v-fdcd8e24] {
   color: #fff;
   margin: 0 0;
   padding-left: 0.2em;
   white-space: nowrap;
+  text-align: left;
 }
-.sw-update-popup-enter-active[data-v-210690d6],
-.sw-update-popup-leave-active[data-v-210690d6] {
+.sw-update-popup a[data-v-fdcd8e24] {
+  text-align: right;
+  padding-right: 1.5em;
+}
+@media (min-width: 768px) {
+.sw-update-popup[data-v-fdcd8e24] {
+    border-radius: 3px;
+    left: initial;
+    min-width: initial;
+    right: 1em;
+    bottom: 1em;
+    padding: 1em;
+    text-align: left;
+    border: 1px solid #3eaf7c;
+}
+.sw-update-popup p[data-v-fdcd8e24],
+  .sw-update-popup a[data-v-fdcd8e24] {
+    font-size: 1em;
+    text-align: left;
+}
+.sw-update-popup p[data-v-fdcd8e24] {
+    margin: 0, 0;
+}
+.sw-update-popup a[data-v-fdcd8e24] {
+    margin-left: 0.5em;
+    padding-right: initial;
+}
+}
+@media print {
+.sw-update-popup[data-v-fdcd8e24] {
+    display: none;
+}
+}
+.sw-update-popup-enter-active[data-v-fdcd8e24],
+.sw-update-popup-leave-active[data-v-fdcd8e24] {
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, transform 0.3s;
   transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
 }
-.sw-update-popup-enter[data-v-210690d6],
-.sw-update-popup-leave-to[data-v-210690d6] {
+.sw-update-popup-enter[data-v-fdcd8e24],
+.sw-update-popup-leave-to[data-v-fdcd8e24] {
   opacity: 0;
   -webkit-transform: translate(0, 50%) scale(0.5);
           transform: translate(0, 50%) scale(0.5);

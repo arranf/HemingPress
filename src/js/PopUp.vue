@@ -58,20 +58,19 @@ export default {
 .sw-update-popup
   display flex
   position fixed
-  right 1em
-  bottom 1em
-  padding 1em
-  border 1px solid $accentColor
-  border-radius 3px
+  left 0
+  bottom 0
+  padding 0.65em
+  border none 
+  border-radius 0px
   background $codeBgColor
   box-shadow 0 4px 16px rgba(0, 0, 0, 0.5)
-  text-align left
   cursor pointer 
+  min-width 100%
 
   p, a
     flex 1
-    font-size 1em
-    margin-left 0.5em
+    font-size 90%
     align-self center
 
   p
@@ -79,6 +78,39 @@ export default {
     margin: 0 0
     padding-left: 0.2em
     white-space nowrap
+    text-align left
+
+  a
+    text-align right
+    padding-right 1.5em
+
+// Tablet+
+@media (min-width: 768px)
+  .sw-update-popup
+    border-radius 3px
+    left initial
+    min-width initial
+    right 1em
+    bottom 1em
+    padding 1em
+
+    text-align left
+    border 1px solid $accentColor
+  
+    p, a
+      font-size: 1em
+      text-align left
+    
+    p
+      margin 0,0
+    
+    a
+      margin-left 0.5em
+      padding-right initial
+
+@media print 
+  .sw-update-popup
+    display none
 
 .sw-update-popup-enter-active, .sw-update-popup-leave-active
   transition opacity 0.3s, transform 0.3s
