@@ -1,6 +1,11 @@
 {
-  "name": "HemingPress",
+  "name": "heming_press",
   "private": true,
+  "scripts": {
+    "watch": "yarn webpack --watch --watch-poll",
+    "build": "NODE_ENV=production yarn webpack",
+    "dev": "yarn webpack"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
@@ -31,10 +36,5 @@
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.1",
     "workbox-webpack-plugin": "^3.6.3"
-  },
-  "scripts": {
-    "watch": "yarn webpack --watch --watch-poll",
-    "build": "NODE_ENV=production yarn webpack",
-    "dev": "yarn webpack"
   }
 }

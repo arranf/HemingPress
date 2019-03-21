@@ -17,10 +17,14 @@ To be documented.
 
 ## Build
 ```
-yarn
-gulp
+yarn install
+yarn build
 ```
 
+## Dev
+```
+yarn watch
+```
 
 You can go to localhost:1313 and this theme should be visible.
 

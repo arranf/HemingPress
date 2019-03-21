@@ -20,7 +20,6 @@ const isDevMode = mode !== "production";
 const cleaning = isDevMode ? ["static/*.*"] : ["public/*.*", "static/*.*"];
 
 module.exports = (env, argv) => {
-  console.log(mode)
   return {
     mode: mode,
     watchOptions: {
