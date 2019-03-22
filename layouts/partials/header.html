@@ -16,7 +16,7 @@
 <link rel="alternate" type="application/json" title="{{ .Site.Title }} RSS" href="{{ .Site.BaseURL }}feed.json">
 
 {{ range .AlternativeOutputFormats -}}
-  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+  <link data-proofer-ignore rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
 <meta name="theme-color" content="#3EAF7C">
