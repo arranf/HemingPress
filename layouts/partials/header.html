@@ -12,8 +12,8 @@
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
 
-<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ .Site.BaseURL }}index.xml">
-<link rel="alternate" type="application/json" title="{{ .Site.Title }} RSS" href="{{ .Site.BaseURL }}feed.json">
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="https://feed.arranfrance.com">
+<link rel="alternate" type="application/json" title="{{ .Site.Title }} RSS" href="https://feed.arranfrance.com?format=json">
 
 {{ range .AlternativeOutputFormats -}}
   <link data-proofer-ignore rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
