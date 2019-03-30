@@ -1,4 +1,4 @@
-{{ $url := getenv (cond (eq "production" (getenv "CONTEXT")) "URL" "DEPLOY_PRIME_URL" ) | default (cond (eq "//localhost:1313/" (printf "%s" $.Site.BaseURL)) "//localhost:1313" $.Site.BaseURL) }}
+{{ $url := getenv (cond (eq "production" (getenv "CONTEXT")) "URL" "DEPLOY_PRIME_URL" ) | default (cond (eq "//localhost:1313" (printf "%s" $.Site.BaseURL)) "//localhost:1313" $.Site.BaseURL) }}
 <!DOCTYPE html>
 <html{{ with .Site.LanguageCode }} lang="{{ . }}" {{ end }}>
   <meta charset="UTF-8">
@@ -22,14 +22,14 @@
   {{ end }}
 
   <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
-  <meta property="og:image" content="{{ $url }}images/og.jpeg" />
+  <meta property="og:image" content="{{ $url }}/images/og.jpeg" />
   <meta property="og:image:alt" content="Arran France" />
 
   {{ if (.IsPage) and eq .Section "post" }}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
   <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
-  <meta name="twitter:image" content="{{ $url }}images/og.jpeg" />
+  <meta name="twitter:image" content="{{ $url }}/images/og.jpeg" />
   <meta name="twitter:label1" value="Reading time" />
   <meta name="twitter:data1" value="{{ .ReadingTime }} minute{{ if not (eq .ReadingTime 1) }}s{{ end }}" />
   {{ end }}
