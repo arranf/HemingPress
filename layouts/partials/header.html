@@ -1,39 +1,62 @@
+{{ $url := getenv (cond (eq "production" (getenv "CONTEXT")) "URL" "DEPLOY_PRIME_URL" ) | default (cond (eq "//localhost:1313/" (printf "%s" $.Site.BaseURL)) "//localhost:1313" $.Site.BaseURL) }}
 <!DOCTYPE html>
-<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}" {{ end }}>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
 
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
 
-<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="https://feed.arranfrance.com">
-<link rel="alternate" type="application/json" title="{{ .Site.Title }} RSS" href="https://feed.arranfrance.com?format=json">
+  <meta property="og:url" content="{{ $url }}{{ .URL }}" />
+  <meta property="og:type" content="website" />
+  {{ if (.IsPage) and eq .Section "post" }}
+  <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+  {{ else }}
+  <meta property="og:title" content="{{ .Site.Title }}" />
+  {{ end }}
 
-{{ range .AlternativeOutputFormats -}}
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
+  <meta property="og:image" content="{{ $url }}images/og.jpeg" />
+  <meta property="og:image:alt" content="Arran France" />
+
+  {{ if (.IsPage) and eq .Section "post" }}
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
+  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
+  <meta name="twitter:image" content="{{ $url }}images/og.jpeg" />
+  <meta name="twitter:label1" value="Reading time" />
+  <meta name="twitter:data1" value="{{ .ReadingTime }} minute{{ if not (eq .ReadingTime 1) }}s{{ end }}" />
+  {{ end }}
+
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="https://feed.arranfrance.com">
+  <link rel="alternate" type="application/json" title="{{ .Site.Title }} RSS"
+    href="https://feed.arranfrance.com?format=json">
+
+  {{ range .AlternativeOutputFormats -}}
   <link data-proofer-ignore rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
-{{ end -}}
+  {{ end -}}
 
-<meta name="theme-color" content="#3EAF7C">
+  <meta name="theme-color" content="#3EAF7C">
 
-<link rel="stylesheet" href="/main.bundle.css">
-<link rel="manifest" href="/manifest.json">
-<script type="text/javascript" defer src="/main.bundle.js"></script>
-<script type="text/javascript" defer src="/vendors~main.bundle.js"></script>
+  <link rel="stylesheet" href="/main.bundle.css">
+  <link rel="manifest" href="/manifest.json">
+  <script type="text/javascript" defer src="/main.bundle.js"></script>
+  <script type="text/javascript" defer src="/vendors~main.bundle.js"></script>
 
-<noscript>
-  <style>
-    .no-js-hidden {
-      display: none;
-    }
+  <noscript>
+    <style>
+      .no-js-hidden {
+        display: none;
+      }
 
-    .lazyload {
-      display: none;
-    }
-  </style>
-</noscript>
+      .lazyload {
+        display: none;
+      }
+    </style>
+  </noscript>
