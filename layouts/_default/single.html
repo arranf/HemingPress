@@ -6,6 +6,9 @@
       <h1 class="title">{{ .Title }}</h1>
       <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
       {{ .Content }}
+
+
+    {{ partial "related" . }}
     </div>
     {{ partial "footer" . }}
   </section>
