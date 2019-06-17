@@ -1,15 +1,15 @@
 {{ $series := $.Page.Params.series}}
 {{ if $series }}
-<div class="well">
+<div class="series">
     <h3>{{$series | humanize}} Series</h3>
     <ol>
-        {{ range $ind,$art := $.Site.Pages.ByDate}}
-        {{ if eq $art.Params.series $series }}
+        {{ range $ind,$post := $.Site.Pages.ByDate}}
+        {{ if eq $post.Params.series $series }}
         <li>
-            {{ if eq $art.Permalink $.Page.Permalink}}
-            <strong>{{ $art.Params.title }}</strong>
+            {{ if eq $post.Permalink $.Page.Permalink}}
+            <strong>{{ $post.Params.title }}</strong>
             {{ else }}
-            <a href="{{ $art.Permalink }}">{{ $art.Params.title }}</a>
+            <a href="{{ $post.Permalink }}">{{ $post.Params.title }}</a>
             {{ end }}
         </li>
         {{ end }}
