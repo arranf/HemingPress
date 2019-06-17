@@ -19,9 +19,10 @@
         :key="s.href"
         v-for="(s, i) in suggestions"
         :class="{ focused: i === focusIndex }"
+        @mousedown="go(i)"
         @mouseenter="focus(i)"
       >
-        <a :href="s.href">
+        <a :href="s.href" @click.prevent>
           <span class="page-title">{{ s.title || s.href }}</span>
         </a>
       </li>
