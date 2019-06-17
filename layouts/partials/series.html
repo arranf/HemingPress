@@ -1,0 +1,19 @@
+{{ $series := $.Page.Params.series}}
+{{ if $series }}
+<div class="well">
+    <h3>{{$series | humanize}} Series</h3>
+    <ol>
+        {{ range $ind,$art := $.Site.Pages.ByDate}}
+        {{ if eq $art.Params.series $series }}
+        <li>
+            {{ if eq $art.Permalink $.Page.Permalink}}
+            <strong>{{ $art.Params.title }}</strong>
+            {{ else }}
+            <a href="{{ $art.Permalink }}">{{ $art.Params.title }}</a>
+            {{ end }}
+        </li>
+        {{ end }}
+        {{ end }}
+    </ol>
+</div>
+{{ end }}
