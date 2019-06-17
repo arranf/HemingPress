@@ -16,16 +16,6 @@ workbox.routing.registerRoute(
     }),
   'GET');
 
-workbox.routing.registerRoute(
-  /\.html$/,
-  workbox.strategies.networkFirst(
-    {
-      "cacheName": "content",
-      plugins: []
-    }),
-  'GET');
-
-
 addEventListener('message', event => {
   const replyPort = event.ports[0]
   const message = event.data
