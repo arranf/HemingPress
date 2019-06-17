@@ -21,7 +21,7 @@
         :class="{ focused: i === focusIndex }"
         @mouseenter="focus(i)"
       >
-        <a :href="s.href" @click.prevent>
+        <a :href="s.href">
           <span class="page-title">{{ s.title || s.href }}</span>
         </a>
       </li>
