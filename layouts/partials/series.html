@@ -9,7 +9,7 @@
             {{ if eq $post.Permalink $.Page.Permalink}}
             <strong>{{ $post.Params.title }}</strong>
             {{ else }}
-            <a href="{{ $post.Permalink }}">{{ $post.Params.title }}</a>
+            <a href="{{ $post.RelPermalink }}">{{ $post.Params.title }}</a>
             {{ end }}
         </li>
         {{ end }}
