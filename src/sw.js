@@ -4,6 +4,12 @@ if (!workbox) {
   console.error(`Boo! Workbox didn't load 😬`);
 }
 
+workbox.routing.registerRoute(
+  new RegExp('\/(page\/\d)?'),
+  new workbox.strategies.NetworkFirst()
+);
+
+
 // This will be auto filled in the build step
 workbox.precaching.precacheAndRoute([]);
 
