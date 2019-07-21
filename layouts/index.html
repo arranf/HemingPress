@@ -3,15 +3,16 @@
   {{ partial "nav" . }}
   <div class="page">
     <div class="content">
-      {{ range sort .Paginator.Pages }}
+      {{ range where .Paginator.Pages "Section" "post"  }}
       <article class="article-snippet">
-        <h3 class="title" style="margin-bottom: 0.25em;"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</h3>
+        <h3 class="title" style="margin-bottom: 0.25em;"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }}
+          ::Draft{{ end }}</h3>
         <span class="date">{{ .Date.Format "January 2, 2006" }}</span>
         <div>
           {{ .Summary | plainify | safeHTML }}
         </div>
         {{ if .Truncated }}
-          <a class="action ripple" href="{{ .RelPermalink }}">Read more</a>
+        <a class="action ripple" href="{{ .RelPermalink }}">Read more</a>
         {{ end }}
       </article>
       {{ end }}

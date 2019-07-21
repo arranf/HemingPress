@@ -1,0 +1,17 @@
+{{ partial "header" . }}
+<div class="theme-container no-sidebar">
+    {{ partial "nav" . }}
+    <section class="page">
+        <div class="content">
+            <h1 class="title">{{ .Title }}</h1>
+            <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
+            {{ partial "series" . }}
+
+            {{ .Content }}
+
+
+            {{ partial "related" . }}
+        </div>
+        {{ partial "footer" . }}
+    </section>
+</div>
