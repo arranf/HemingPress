@@ -12,7 +12,7 @@
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
-    >
+    />
     <ul class="suggestions" v-if="showSuggestions" @mouseleave="unfocus">
       <li
         class="suggestion"
@@ -35,6 +35,8 @@
 
 <script>
 import lunr from "lunr";
+
+const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
 
 export default {
   name: "SearchBox",
@@ -59,17 +61,17 @@ export default {
       return this.focused && this.suggestions && this.suggestions.length;
     },
     suggestions() {
-      var query = this.query.trim().toLowerCase();
+      const query = this.query.trim().toLowerCase();
       if (!query) {
         return;
       }
       // Find the item in our index corresponding to the lunr one to have more info
       // Lunr result:
-      //  {ref: "/section/page1", score: 0.2725657778206127}
+      //  {ref: '/section/page1', score: 0.2725657778206127}
       // Our result:
-      //  {title:"Page1", href:"/section/page1", ...}
-      var documents = this.documents;
-      var results = this.lunrIndex.search(query);
+      //  {title:'Page1', href:'/section/page1', ...}
+      const documents = this.documents;
+      const results = this.lunrIndex.search(query);
       return (
         results
           .map(r => documents.find(p => p.href === r.ref))
@@ -78,23 +80,73 @@ export default {
       );
     }
   },
+
+  mounted() {
+    let request = new XMLHttpRequest();
+    const url = this.getCurrentHostname + "/js/lunr/index.json";
+    request.open("GET", url, true);
+    request.onload = function() {
+      if (request.status < 200 || request.status >= 400) {
+        this.loading = false;
+        console.error("Unable to fetch Lunr data.");
+      }
+
+      this.documents = JSON.parse(request.responseText);
+
+      const documents = this.documents;
+      // Set up lunrjs by declaring the fields we use
+      // Also provide their boost level for the ranking
+      try {
+        this.lunrIndex = lunr(function() {
+          this.field("title", {
+            boost: 5
+          });
+          this.field("tags", {
+            boost: 2
+          });
+          this.field("content");
+
+          // ref is the result item identifier (I chose the page URL)
+          this.ref("href");
+
+          // Feed lunr with each file and let lunr actually index them
+          for (let i = 0; i < documents.length; i++) {
+            this.add(documents[i]);
+          }
+        });
+      } catch (e) {
+        console.error("Error accessing lunr");
+      } finally {
+        this.loading = false;
+      }
+    }.bind(this);
+
+    request.onerror = function() {
+      console.error("There was a connection error of some sort");
+      this.loading = false;
+    }.bind(this);
+
+    request.send();
+  },
   methods: {
     onUp() {
-      if (this.showSuggestions) {
-        if (this.focusIndex > 0) {
-          this.focusIndex--;
-        } else {
-          this.focusIndex = this.suggestions.length - 1;
-        }
+      if (!this.showSuggestions) {
+        return;
+      }
+      if (this.focusIndex > 0) {
+        this.focusIndex--;
+      } else {
+        this.focusIndex = this.suggestions.length - 1;
       }
     },
     onDown() {
-      if (this.showSuggestions) {
-        if (this.focusIndex < this.suggestions.length - 1) {
-          this.focusIndex++;
-        } else {
-          this.focusIndex = 0;
-        }
+      if (!this.showSuggestions) {
+        return;
+      }
+      if (this.focusIndex < this.suggestions.length - 1) {
+        this.focusIndex++;
+      } else {
+        this.focusIndex = 0;
       }
     },
     go(i) {
@@ -111,57 +163,11 @@ export default {
     unfocus() {
       this.focusIndex = -1;
     }
-  },
-  mounted() {
-    var request = new XMLHttpRequest();
-    var url = this.getCurrentHostname + "/js/lunr/index.json";
-    request.open("GET", url, true);
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        // Success!
-        this.documents = JSON.parse(request.responseText);
-
-        const documents = this.documents;
-        // Set up lunrjs by declaring the fields we use
-        // Also provide their boost level for the ranking
-        try {
-          this.lunrIndex = lunr(function() {
-            this.field("title", {
-              boost: 5
-            });
-            this.field("tags", {
-              boost: 2
-            });
-            this.field("content");
-
-            // ref is the result item identifier (I chose the page URL)
-            this.ref("href");
-
-            // Feed lunr with each file and let lunr actually index them
-            for (var i = 0; i < documents.length; i++) {
-              this.add(documents[i]);
-            }
-          });
-        } catch (e) {
-          this.loading = false;
-          console.error("Error accessing lunr");
-        }
-      } else {
-        this.loading = false;
-        console.error("Unable to fetch Lunr data.");
-      }
-    }.bind(this);
-
-    request.onerror = function() {
-      console.error("There was a connection error of some sort");
-    };
-
-    request.send();
   }
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang='stylus' scoped>
 @import '../styles/config.styl';
 
 .search-box {
