@@ -7,6 +7,7 @@ import SWUpdateEvent from './js/SWUpdateEvent'
 import Vue from 'vue'
 import PopUp from './js/PopUp.vue';
 import SearchBox from './js/SearchBox.vue';
+import navbar from './js/navbar'
 
 // Entry point for lazysizes
 import lazysizes from "lazysizes";
@@ -20,37 +21,37 @@ showSearch();
 function registerSW() {
     console.log('Register SW fired');
     register('/sw.js', {
-        ready () {
-            console.log('Service worker is active.')   
+        ready() {
+            console.log('Service worker is active.')
         },
-        registered (registration) {
+        registered(registration) {
             console.log('Service worker has been registered.')
         },
-        cached (registration) {
+        cached(registration) {
             console.log('Content has been cached for offline use.')
         },
-        updatefound (registration) {
+        updatefound(registration) {
             console.log('New content is downloading.')
         },
-        updated (registration) {
+        updated(registration) {
             const updateEvent = new SWUpdateEvent(registration);
             new Vue({
                 el: '#popup',
                 render: h => h(
-                  PopUp, 
-                  {
-                    props: {
-                      updateEvent
-                    }
-                  })
-              });
+                    PopUp,
+                    {
+                        props: {
+                            updateEvent
+                        }
+                    })
+            });
             console.log('New content is available; please refresh.')
         },
-        offline () {
+        offline() {
             console.log('Change for Service Worker')
             console.log('No internet connection found. App is running in offline mode.')
         },
-        error (error) {
+        error(error) {
             console.error('Error during service worker registration:', error)
         }
     })

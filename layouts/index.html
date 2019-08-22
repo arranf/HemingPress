@@ -1,6 +1,7 @@
 {{ partial "header" . }}
-<div class="theme-container no-sidebar">
+<div class="theme-container">
   {{ partial "nav" . }}
+
   <div class="page">
     <div class="content">
       {{ range where .Paginator.Pages "Section" "post"  }}
