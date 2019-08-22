@@ -1,9 +1,6 @@
 module.exports = {
-    plugins: {
-      "postcss-import": {},
-      "autoprefixer": {
-        browsers: ["last 2 versions", "> 2%"]
-      }
-    }
-  };
-  
+  plugins: {
+    "postcss-import": {},
+    "autoprefixer": {}
+  }
+};

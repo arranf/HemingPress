@@ -1,27 +1,12 @@
 const path = require("path");
-// const fs= require("fs");
-// const toml= require("toml");
-
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-// const OfflinePlugin= require("offline-plugin");
-// const ManifestPlugin= require("webpack-manifest-plugin");
-// const CompressionPlugin= require("compression-webpack-plugin");
-// const WebpackPwaManifest= require("webpack-pwa-manifest");
-
-const mode = process.env.NODE_ENV || 'development';
-const isDevMode = mode !== "production";
-// const configFile = toml.parse(fs.readFileSync("./config.toml", "utf-8"));
-// const manifest = configFile.manifest;
-const cleaning = isDevMode ? ["static/*.*"] : ["public/*.*", "static/*.*"];
 
 module.exports = (env, argv) => {
   return {
-    mode: mode,
     watchOptions: {
       ignored: ["/node_modules/"]
     },
@@ -30,9 +15,6 @@ module.exports = (env, argv) => {
       splitChunks: {
         chunks: "all",
       }
-    },
-    entry: {
-      main: "./src/index.js",
     },
     output: {
       filename: "[name].bundle.js",
@@ -98,9 +80,6 @@ module.exports = (env, argv) => {
         filename: "[name].bundle.css",
         chunkFilename: "[id].bundle.css"
       }),
-      //   new ManifestPlugin({
-      //     fileName: "../data/manifest.json",
-      // //   }),
       new CopyWebpackPlugin(
         [
           {
@@ -112,32 +91,7 @@ module.exports = (env, argv) => {
             to: "sw.js"
           }
         ]
-      ),
-      //   new WebpackPwaManifest({
-      //     filename: "manifest.json",
-      //     orientation: "portrait",
-      //     display: "standalone",
-      //     start_url: ".",
-      //     inject: true,
-      //     fingerprints: true,
-      //     ios: true,
-      //     publicPath: null,
-      //     includeDirectory: true,
-      //     theme_color: manifest.theme_color,
-      //     name: manifest.name,
-      //     short_name: manifest.short_name,
-      //     description: manifest.description,
-      //     background_color: manifest.background_color,
-      //     icons: [{
-      //       src: path.resolve(manifest.iconsSrc),
-      //       sizes: [96, 128, 192, 256, 384, 512],
-      //     },
-      //     {
-      //       src: path.resolve(manifest.iconsSrc),
-      //       sizes: "1024x1024"
-      //     }]
-      //   }),
-      new CleanWebpackPlugin(cleaning, { watch: true, beforeEmit: true })
+      )
     ]
   };
 };
