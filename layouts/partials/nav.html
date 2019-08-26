@@ -1,5 +1,5 @@
 <header class="navbar">
-  <div class="sidebar-button no-js-hidden" onclick="toggleNavbar()">
+  <div class="sidebar-button no-js-hidden" onclick="toggleSidebar()">
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 448 512" class="icon">
       <path fill="currentColor"
         d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" />
@@ -18,7 +18,7 @@
     {{ partial "navlinks" . }}
   </div>
 </header>
-<div class="sidebar-mask" onclick="toggleNavbar()"></div>
+<div class="sidebar-mask" onclick="toggleSidebar()"></div>
 <div class="sidebar">
   {{ partial "navlinks" . }}
 </div>

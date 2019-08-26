@@ -74,7 +74,7 @@ module.exports = (env, argv) => {
           warning: false,
           compress: true
         },
-        exclude: '/js/navbar.js'
+        exclude: '/js/sidebar.js'
       }),
       new MiniCssExtractPlugin({
         filename: "[name].bundle.css",

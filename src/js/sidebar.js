@@ -12,33 +12,32 @@ function onTouchEnd(e) {
     const dy = e.changedTouches[0].clientY - touchStart.y
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
         if (dx > 0 && touchStart.x <= 80) {
-            setNavbar(true)
+            setSidebar(true)
         } else {
-            setNavbar(false)
+            setSidebar(false)
         }
     }
 }
 
-function setNavbar(shouldBeOpen) {
+function setSidebar(shouldBeOpen) {
+    const themeContainer = document.getElementsByClassName('theme-container')[0];
     if (shouldBeOpen) {
-
         themeContainer.classList.add('sidebar-open')
     } else {
-
         themeContainer.classList.remove('sidebar-open')
     }
 }
 
-function toggleNavbar() {
+function toggleSidebar() {
     const themeContainer = document.getElementsByClassName('theme-container')[0];
     if (themeContainer.classList.contains('sidebar-open')) {
-        setNavbar(false)
+        setSidebar(false)
     } else {
-        setNavbar(true)
+        setSidebar(true)
     }
 }
 
-window.toggleNavbar = toggleNavbar
+window.toggleSidebar = toggleSidebar
 
 const themeContainer = document.getElementsByClassName('theme-container')[0];
 themeContainer.addEventListener('touchstart', onTouchStart, false);

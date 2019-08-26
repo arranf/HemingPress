@@ -1,19 +1,23 @@
 <div class="page-edit">
-    <div class="edit-link">
-        {{ range .Site.Params.social }}
-        <a class="footer-link" href="{{ .url }}">
-          <img src="/svg/{{ .type  }}.svg" alt="{{ .name }}" />
-        </a>
-        {{ end }}
-    </div>
-
-    {{ if .Lastmod }}
-    <div class="last-updated">
-      <span class="prefix">Last Updated: </span>
-      <span class="time">{{ .Lastmod.Format "2006-01-02 15:04" }}</span>
-    </div>
+  <div class="edit-link">
+    {{ range .Site.Params.social }}
+    <a class="footer-link" href="{{ .url }}">
+      <img src="/svg/{{ .type  }}.svg" alt="{{ .name }}" />
+    </a>
     {{ end }}
+  </div>
 
-    <!-- Vue anchor -->
-    <div id="popup"></div>
+  {{ if .Lastmod }}
+  <div class="last-updated">
+    <span class="prefix">Last Updated: </span>
+    <span class="time">{{ .Lastmod.Format "2006-01-02 15:04" }}</span>
+  </div>
+  {{ end }}
+
+  <!-- Vue anchor -->
+  <div id="popup"></div>
+
+  <!-- No async or defer on these to prevent bug where CSS transitions flash causing the sidebar to display for an instant -->
+  <script type="text/javascript" src="/main.bundle.js"></script>
+  <script type="text/javascript" src="/vendors~main.bundle.js"></script>
 </div>

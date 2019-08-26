@@ -4,10 +4,11 @@ import './styles/theme.styl';
 import { register } from 'register-service-worker'
 import SWUpdateEvent from './js/SWUpdateEvent'
 
+import sidebar from './js/sidebar'
+
 import Vue from 'vue'
 import PopUp from './js/PopUp.vue';
 import SearchBox from './js/SearchBox.vue';
-import navbar from './js/navbar'
 
 // Entry point for lazysizes
 import lazysizes from "lazysizes";
