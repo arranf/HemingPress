@@ -37,8 +37,27 @@ function toggleSidebar() {
     }
 }
 
+// Tests whether the DOM supports passive event handlers
+// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
+function supportsPassiveEvents() {
+    let supportsPassive = false;
+    try {
+        var opts = Object.defineProperty({}, 'passive', {
+            get: function () {
+                supportsPassive = true;
+            }
+        });
+        window.addEventListener("testPassive", null, opts);
+        window.removeEventListener("testPassive", null, opts);
+    } catch (e) {
+        return supportsPassive;
+    }
+    return supportsPassive;
+}
+
+const supportsPassive = supportsPassiveEvents();
 window.toggleSidebar = toggleSidebar
 
 const themeContainer = document.getElementsByClassName('theme-container')[0];
-themeContainer.addEventListener('touchstart', onTouchStart, false);
-themeContainer.addEventListener('touchend', onTouchEnd, false);
+themeContainer.addEventListener('touchstart', onTouchStart, supportsPassive ? { passive: true } : false);
+themeContainer.addEventListener('touchend', onTouchEnd, supportsPassive ? { passive: true } : false);
