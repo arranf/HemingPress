@@ -4,3 +4,5 @@ public/
 resources/
 static/
 *.log
+
+data/webpack.json

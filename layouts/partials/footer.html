@@ -18,6 +18,8 @@
   <div id="popup"></div>
 
   <!-- No async or defer on these to prevent bug where CSS transitions flash causing the sidebar to display for an instant -->
-  <script type="text/javascript" src="/main.bundle.js"></script>
-  <script type="text/javascript" src="/vendors~main.bundle.js"></script>
+  {{ $script := .Site.Data.webpack.main }}
+  {{ with $script.js }}
+  <script src="{{ relURL . }}"></script>
+  {{ end }}
 </div>

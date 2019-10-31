@@ -44,7 +44,11 @@
 
   <meta name="theme-color" content="#3EAF7C">
 
-  <link rel="stylesheet" href="/main.bundle.css">
+  {{ $stylesheet := .Site.Data.webpack.main }}
+  {{ with $stylesheet.css }}
+  <link href="{{ relURL . }}" rel="stylesheet">
+  {{ end }}
+
   <link rel="manifest" href="/manifest.json">
   <noscript>
     <style>

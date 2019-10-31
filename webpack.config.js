@@ -3,23 +3,21 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-
+const AssetsPlugin = require("assets-webpack-plugin");
 
 module.exports = (env, argv) => {
   return {
     watchOptions: {
       ignored: ["/node_modules/"]
     },
-    optimization: {
-      minimize: true,
-      splitChunks: {
-        chunks: "all",
-      }
+    entry: {
+      main: path.join(__dirname, "src", "index.js")
     },
     output: {
-      filename: "[name].bundle.js",
-      chunkFilename: "[name].bundle.js",
-      path: path.resolve(__dirname, "static")
+      filename: "[name].[contenthash].js",
+      chunkFilename: "[id].[contenthash].js",
+      path: path.resolve(__dirname, "static"),
+      publicPath: '/'
     },
     module: {
       rules: [
@@ -69,18 +67,22 @@ module.exports = (env, argv) => {
     plugins: [
       new VueLoaderPlugin(),
       new UglifyJsPlugin({
-        sourceMap: true,
         cache: true,
         parallel: true,
-        uglifyOptions: {
-          warning: false,
-          compress: true
-        },
-        exclude: '/js/sidebar.js'
+        sourceMap: true
       }),
+      // Move CSS from JS into it's own CSS bundle
       new MiniCssExtractPlugin({
-        filename: "[name].bundle.css",
-        chunkFilename: "[id].bundle.css"
+        filename: "[name].[contenthash].css",
+        chunkFilename: "[id].[contenthash].css"
+      }),
+      // Outputs file in a JSON format readable by Hugo
+      new AssetsPlugin({
+        filename: "webpack.json",
+        path: path.join(__dirname, "data"),
+        prettyPrint: true,
+        includeAllFileTypes: false,
+        fileTypes: ['js', 'css']
       }),
       new CopyWebpackPlugin(
         [
