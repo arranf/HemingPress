@@ -7,9 +7,6 @@ import SWUpdateEvent from './js/SWUpdateEvent'
 import('./js/sidebar')
 import('./js/SearchBox');
 
-import Vue from 'vue'
-import PopUp from './js/PopUp.vue';
-
 // Use native lazy image loading if possible, else use lazysizes.
 if ('loading' in HTMLImageElement.prototype) {
     console.debug('Native lazy loading enabled')
@@ -53,16 +50,11 @@ function registerSW() {
         },
         updated(registration) {
             const updateEvent = new SWUpdateEvent(registration);
-            new Vue({
-                el: '#popup',
-                render: h => h(
-                    PopUp,
-                    {
-                        props: {
-                            updateEvent
-                        }
-                    })
-            });
+            import('./js/PopUp')
+                .then(module => {
+                    const renderPopUp = module.default;
+                    renderPopUp(updateEvent);
+                })
             console.debug('New content is available; please refresh.')
         },
         offline() {
