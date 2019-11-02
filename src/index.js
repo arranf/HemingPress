@@ -4,11 +4,11 @@ import './styles/theme.styl';
 import { register } from 'register-service-worker'
 import SWUpdateEvent from './js/SWUpdateEvent'
 
-import sidebar from './js/sidebar'
+import('./js/sidebar')
+import('./js/SearchBox');
 
 import Vue from 'vue'
 import PopUp from './js/PopUp.vue';
-import SearchBox from './js/SearchBox.vue';
 
 // Use native lazy image loading if possible, else use lazysizes.
 if ('loading' in HTMLImageElement.prototype) {
@@ -36,8 +36,6 @@ if ('loading' in HTMLImageElement.prototype) {
 if ('serviceWorker' in window.navigator) {
     registerSW();
 }
-
-showSearch();
 
 function registerSW() {
     register('/sw.js', {
@@ -73,12 +71,5 @@ function registerSW() {
         error(error) {
             console.warn('Error during service worker registration:', error)
         }
-    })
-}
-
-function showSearch() {
-    new Vue({
-        el: '#searchbox-vue',
-        render: h => h(SearchBox)
     })
 }

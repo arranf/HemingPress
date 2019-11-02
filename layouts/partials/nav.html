@@ -10,11 +10,7 @@
   </a>
 
   <div class="links" style="max-width: 719px">
-    <div id="searchbox-vue">
-      <search-box>
-        {{ partial "loading" . }}
-      </search-box>
-    </div>
+    {{ partial "searchbox.html" . }}
     {{ partial "navlinks" . }}
   </div>
 </header>
