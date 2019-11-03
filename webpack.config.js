@@ -1,9 +1,11 @@
 const path = require("path");
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 const AssetsPlugin = require("assets-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => {
   return {
@@ -12,6 +14,16 @@ module.exports = (env, argv) => {
     },
     entry: {
       main: path.join(__dirname, "src", "index.js")
+    },
+    optimization: {
+      minimizer: [new TerserJSPlugin({
+        extractComments: false,
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }), new OptimizeCSSAssetsPlugin({})],
     },
     output: {
       filename: "[name].[contenthash].js",
@@ -65,12 +77,6 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new VueLoaderPlugin(),
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true
-      }),
       // Move CSS from JS into it's own CSS bundle
       new MiniCssExtractPlugin({
         filename: "[name].[contenthash].css",
