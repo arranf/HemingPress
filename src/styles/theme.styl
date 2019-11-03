@@ -37,7 +37,7 @@ body
   left 0
   right 0
   height $navbarHeight
-  background-color #fff
+  background-color $bgColor
   box-sizing border-box
   border-bottom 1px solid $borderColor
 
@@ -52,7 +52,7 @@ body
 
 .sidebar
   font-size 15px
-  background-color #fff
+  background-color $bgColor
   width $sidebarWidth
   position fixed
   z-index 10
@@ -64,7 +64,7 @@ body
   border-right 1px solid $borderColor
   overflow-y auto
 
-.content:not(.custom)
+.content
   @extend $wrapper
   > *:first-child
     margin-top $navbarHeight
@@ -72,7 +72,7 @@ body
     text-decoration underline
   p.demo
     padding 1rem 1.5rem
-    border 1px solid #ddd
+    border 1px solid $darkerBorderColor
     border-radius 4px
   img
     max-width 100%
@@ -91,9 +91,9 @@ p a code
   color $accentColor
 
 kbd
-  background #eee
-  border solid 0.15rem #ddd
-  border-bottom solid 0.25rem #ddd
+  background $inlineCodeBgColor
+  border solid 0.15rem $darkerBorderColor
+  border-bottom solid 0.25rem $darkerBorderColor
   border-radius 0.15rem
   padding 0 0.15em
 
@@ -113,14 +113,14 @@ strong
 h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
-  .content:not(.custom) > &
+  .content > &
     margin-top (0.5rem - $navbarHeight)
     padding-top ($navbarHeight + 1rem)
     margin-bottom 0
     &:first-child
       margin-top -1.5rem
       margin-bottom 1rem
-      + p, + pre, + .custom-block
+      + p, + pre
         margin-top 2rem
   &:hover .header-anchor
     opacity: 1
@@ -177,21 +177,16 @@ th, td
   border 1px solid #dfe2e5
   padding .6em 1em
 
-.custom-layout
-  padding-top $navbarHeight
-
 .theme-container
   &.sidebar-open
     .sidebar-mask
       display: block
   &.no-navbar
-    .content:not(.custom) > h1, h2, h3, h4, h5, h6
+    .content > h1, h2, h3, h4, h5, h6
         margin-top 1.5rem
         padding-top 0
     .sidebar
       top 0
-    .custom-layout
-      padding-top 0
 
 
 @media (min-width: ($MQMobile + 1px))
