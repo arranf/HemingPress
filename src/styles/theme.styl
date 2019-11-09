@@ -99,8 +99,8 @@ kbd
 
 blockquote
   font-size 1.2rem
-  color #999
-  border-left .25rem solid #dfe2e5
+  color $blockQuoteColor
+  border-left .25rem solid $blockQuoteBorderColor
   margin-left 0
   padding-left 1rem
 
@@ -169,12 +169,12 @@ table
   overflow-x: auto
 
 tr
-  border-top 1px solid #dfe2e5
+  border-top 1px solid $blockQuoteBorderColor
   &:nth-child(2n)
-    background-color #f6f8fa
+    background-color $tableStripeBgColor
 
 th, td
-  border 1px solid #dfe2e5
+  border 1px solid $blockQuoteBorderColor
   padding .6em 1em
 
 .theme-container
