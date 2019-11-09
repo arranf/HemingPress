@@ -1,0 +1,41 @@
+
+:root {
+    /* color */
+    --accent-color: #3eaf7c;
+    --text-color: #2c3e50;
+    --inverse-text-color: #ffffff;
+    --date-text-color: #777777;
+    --time-color: #aaa;
+    --icon-outbound-color: #aaa;
+    
+    --border-color: #eaecef;
+    --darker-border-color: #dddddd;
+
+    --bg-color: #ffffff;
+    --series-outbound-bg-color: #f6f5f5;
+    --arrow-bg-color: #ccc;
+
+    --code-color: #ffffff;
+    --code-bg-color: #282c34;
+    --inline-code-color: #5F7183;
+    --inline-code-bg-color: rgba(27,31,35,0.05);
+    --code-highlighted-color: rgba(0, 0, 0, 66%);
+    --code-title-color: rgba(255, 255, 255, 0.4);
+    --code-number-color: rgba(255, 255, 255, 0.3);
+    --popUp-shadow-color: rgba(0, 0, 0, 0.5);
+    --block-quote-color: #999;
+    --block-quote-border-color: #dfe2e5;
+    --table-stripe-bg-color: #f6f8fa;
+
+    /* layout */
+    --navbar-height: 3.6rem;
+    --sidebar-width: 20rem;
+    --content-width: 740px;
+    
+    /* breakpoints */
+    --MQNarrow: 959px;
+    --MQMobile: 719px;
+    --MQMobileNarrow: 419px;
+
+    --line-numbers-wrapper-width: 3.5rem;
+}
