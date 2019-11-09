@@ -17,7 +17,7 @@
     padding: 0 0.5rem 0 2rem;
     outline: none;
     transition: all 0.2s ease;
-    background: #fff url('../svg/search.svg') 0.6rem 0.5rem no-repeat;
+    background: $bgColor url('../svg/search.svg') 0.6rem 0.5rem no-repeat;
     background-size: 1rem;
 
     &:focus {
@@ -27,7 +27,7 @@
   }
 
   .suggestions {
-    background: #fff;
+    background:$bgColor;
     width: 20rem;
     position: absolute;
     top: 1.5rem;
@@ -62,7 +62,7 @@
     }
 
     &.focused {
-      background-color: #f3f4f5;
+      background-color:darken($bgColor, 8%);
 
       a {
         color: $accentColor;

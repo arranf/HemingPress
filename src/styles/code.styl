@@ -2,11 +2,11 @@
 
 .content
   code
-    color lighten($textColor, 20%)
+    color $inlineCodeColor
     padding 0.25rem 0.5rem
     margin 0
     font-size 0.85em
-    background-color rgba(27,31,35,0.05)
+    background-color $inlineCodeBgColor
     border-radius 3px
 
 .content
@@ -18,7 +18,7 @@
     border-radius 6px
     overflow auto
     code
-      color #fff
+      color $codeColor
       padding 0
       background-color transparent
       border-radius 0
@@ -36,7 +36,7 @@ div[class*="language-"]
     width 100%
     line-height 1.4
     .highlighted
-      background-color rgba(0, 0, 0, 66%)
+      background-color $codeHighlightedColor
   pre, pre[class*="language-"]
     background transparent
     position relative
@@ -47,7 +47,7 @@ div[class*="language-"]
     top 0.8em
     right 1em
     font-size 0.75rem
-    color rgba(255, 255, 255, 0.4)
+    color $codeTitleColor
   &:not(.line-numbers-mode)
     .line-numbers-wrapper
       display none
@@ -63,7 +63,7 @@ div[class*="language-"]
           display block
           width $lineNumbersWrapperWidth
           height 100%
-          background-color rgba(0, 0, 0, 66%)
+          background-color $codeHighlightedColor
     pre
       padding-left $lineNumbersWrapperWidth + 1 rem
       vertical-align middle
@@ -72,7 +72,7 @@ div[class*="language-"]
       top 0
       width $lineNumbersWrapperWidth
       text-align center
-      color rgba(255, 255, 255, 0.3)
+      color $codeNumberColor
       padding 1.25rem 0
       line-height 1.4
       br
@@ -91,39 +91,5 @@ div[class*="language-"]
       width $lineNumbersWrapperWidth
       height 100%
       border-radius 6px 0 0 6px
-      border-right 1px solid rgba(0, 0, 0, 66%)
+      border-right 1px solid $codeHighlightedColor
       background-color $codeBgColor
-
-
-// for lang in $codeLang
-//   div{'[class~="language-' + lang + '"]'}
-//     &:before
-//       content ('' + lang)
-
-// div[class~="language-javascript"]
-//   &:before
-//     content "js"
-
-// div[class~="language-typescript"]
-//   &:before
-//     content "ts"
-
-// div[class~="language-markup"]
-//   &:before
-//     content "html"
-
-// div[class~="language-markdown"]
-//   &:before
-//     content "md"
-
-// div[class~="language-json"]:before
-//   content "json"
-
-// div[class~="language-ruby"]:before
-//   content "rb"
-
-// div[class~="language-python"]:before
-//   content "py"
-
-div[class~="language-bash"]:before
-  content "sh"
