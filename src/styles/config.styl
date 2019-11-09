@@ -29,6 +29,37 @@ $blockQuoteBorderColor = #dfe2e5
 
 $tableStripeBgColor = #f6f8fa
 
+@media (prefers-color-scheme: dark)
+    $textColor = invert($textColor)
+    $borderColor = invert($borderColor)
+    $darkerBorderColor = invert($borderColor)
+    $bgColor = #000000
+
+    $inverseTextColor = #000000
+
+    $dateTextColor = invert($dateTextColor)
+    $timeColor = invert($timeColor)
+
+    $iconOutboundColor = invert($iconOutboundColor)
+    $seriesOutboundBgColor = invert($seriesOutboundBgColor)
+
+    $arrowBgColor = invert($arrowBgColor)
+
+    $codeBgColor = invert(#282c34)
+    $codeColor = #000000
+    $inlineCodeBgColor = invert( rgba(27,31,35,0.95))
+    $inlineCodeColor = darken($textColor, 20%)
+    $codeHighlightedColor = darken(invert(rgba(0, 0, 0, 66%)), 20%)
+    $codeTitleColor = rgba(0, 0, 0, 0.4)
+    $codeNuberColor = rgba(0, 0, 0, 0.3)
+    $popUpShadowColor = darken(invert(rgba(0, 0, 0, 0.5)), 20%)
+
+    $blockQuoteColor = invert(#999)
+    $blockQuoteBorderColor = invert(#dfe2e5)
+
+    $tableStripeBgColor = invert(#f6f8fa)
+
+
 // layout
 $navbarHeight = 3.6rem
 $sidebarWidth = 20rem
