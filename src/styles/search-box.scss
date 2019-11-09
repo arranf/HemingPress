@@ -1,85 +1,80 @@
-@import './config.styl';
-
-.search-box {
+@import './config.scss';.search-box  {
   display: inline-block;
   position: relative;
   margin-right: 1rem;
 
-  input {
+  input  {
     cursor: text;
     width: 10rem;
-    color: lighten($textColor, 25%);
+    color: var(--text-color-lighter-3);
     display: inline-block;
-    border: 1px solid darken($borderColor, 10%);
+    border: 1px solid var(--border-color-darker);
     border-radius: 2rem;
     font-size: 0.9rem;
     line-height: 2rem;
     padding: 0 0.5rem 0 2rem;
     outline: none;
     transition: all 0.2s ease;
-    background: $bgColor url('../svg/search.svg') 0.6rem 0.5rem no-repeat;
+    background: var(--bg-color) url('../svg/search.svg') 0.6rem 0.5rem no-repeat;
     background-size: 1rem;
-
-    &:focus {
+    
+    &:focus  {
       cursor: auto;
-      border-color: $accentColor;
+      border-color: var(--accent-color);
     }
   }
-
-  .suggestions {
-    background:$bgColor;
+  
+  .suggestions  {
+    background: var(--bg-color);
     width: 20rem;
     position: absolute;
     top: 1.5rem;
-    border: 1px solid darken($borderColor, 10%);
+    border: 1px solid var(--border-color-darker);
     border-radius: 6px;
     padding: 0.4rem;
-    list-style-type: none;
-
-    &.align-right {
+    list-style-type: none;&.align-right  {
       right: 0;
     }
   }
-
-  .suggestion {
+  
+  .suggestion  {
     line-height: 1.4;
     padding: 0.4rem 0.6rem;
     border-radius: 4px;
     cursor: pointer;
 
-    a {
+    a  {
       white-space: normal;
-      color: lighten($textColor, 35%);
-
-      .page-title {
+      color: var(--text-color-lighter-4);
+      .page-title  {
         font-weight: 600;
-      }
-
-      .header {
+      }.header  {
         font-size: 0.9em;
         margin-left: 0.25em;
       }
     }
+    
+    &.focused  {
+      background-color: var(--bg-color-darker);
 
-    &.focused {
-      background-color:darken($bgColor, 8%);
-
-      a {
-        color: $accentColor;
+      a  {
+        color: var(--accent-color);
       }
     }
   }
 }
 
+
+
+
+
 @media (max-width: $MQNarrow) {
-  .search-box {
-    input {
+  .search-box  {
+    input  {
       cursor: pointer;
       width: 0;
       border-color: transparent;
-      position: relative;
-
-      &:focus {
+      position: relative;&:focus  {
         cursor: text;
         left: 0;
         width: 10rem;
@@ -88,36 +83,44 @@
   }
 }
 
+
+
+
+
 @media (max-width: $MQNarrow) and (min-width: $MQMobile) {
-  .search-box {
-    .suggestions {
+  .search-box  {
+    .suggestions  {
       left: 0;
     }
   }
 }
 
+
+
+
 @media (max-width: $MQMobile) {
-  .search-box {
+  .search-box  {
     margin-right: 0;
 
-    input {
+    input  {
       left: 1rem;
-    }
-
-    .suggestions {
+    }.suggestions  {
       right: 0;
     }
   }
 }
 
+
+
+
 @media (max-width: $MQMobileNarrow) {
-  .search-box {
-    .suggestions {
+  .search-box  {
+    .suggestions  {
       width: calc(100vw - 4rem);
     }
 
-    input {
-      &:focus {
+    input  {
+      &:focus  {
         width: 8rem;
       }
     }

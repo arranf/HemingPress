@@ -1,5 +1,5 @@
 // Entry point for CSS
-import './styles/theme.styl';
+import './styles/theme.scss';
 
 import { register } from 'register-service-worker'
 import SWUpdateEvent from './js/SWUpdateEvent'

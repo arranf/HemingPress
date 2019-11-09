@@ -42,17 +42,11 @@ module.exports = (env, argv) => {
           ]
         },
         {
-          test: /\.styl(us)?$/,
+          test: /\.scss$/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            'postcss-loader',
-            {
-              loader: 'stylus-loader',
-              options: {
-                preferPathResolver: 'webpack'
-              }
-            }
+            'sass-loader',
           ]
         },
         {
@@ -72,8 +66,7 @@ module.exports = (env, argv) => {
               },
             },
           ],
-        },
-        { test: /\.vue$/, use: 'vue-loader' },
+        }
       ]
     },
     plugins: [

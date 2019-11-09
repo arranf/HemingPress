@@ -1,0 +1,53 @@
+@import './config.scss';.bar {
+  pointer-events: none;
+  content: "";
+  background: var(--accent-color);
+  transition-timing-function: ease;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  animation: loader 0.8s;
+}
+
+@-webkit-keyframes loader  {
+  0%  {
+        width: 5%;    left: 0;    right: 0;
+  }99%  {
+        width: 100%;    left: 0;    right: 0;
+  }
+}
+
+@-moz-keyframes loader  {
+  0%  {
+        width: 5%;    left: 0;    right: 0;
+  }99%  {
+        width: 100%;    left: 0;    right: 0;
+  }
+}
+
+@-ms-keyframes loader  {
+  0%  {
+        width: 5%;    left: 0;    right: 0;
+  }99%  {
+        width: 100%;    left: 0;    right: 0;
+  }
+}
+
+@-o-keyframes loader  {
+  0%  {
+        width: 5%;    left: 0;    right: 0;
+  }99%  {
+        width: 100%;    left: 0;    right: 0;
+  }
+}
+
+@keyframes loader  {
+  0%  {
+        width: 5%;    left: 0;    right: 0;
+  }99%  {
+        width: 100%;    left: 0;    right: 0;
+  }
+}

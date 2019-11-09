@@ -2,7 +2,9 @@
   <div class="edit-link">
     {{ range .Site.Params.social }}
     <a class="footer-link" href="{{ .url }}">
-      <img src="/svg/{{ .type  }}.svg" alt="{{ .name }}" />
+      <svg width="24px" height="24px">
+        <use xlink:href="/svg/{{ .type  }}.svg#{{ .type }}"></use>
+      </svg>
     </a>
     {{ end }}
   </div>

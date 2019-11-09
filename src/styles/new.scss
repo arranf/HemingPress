@@ -1,0 +1,92 @@
+@import './config';
+
+.date  {
+  margin: 0 0 1em 0;
+  display: block;
+  color: var(--date-text-color);
+  font-size: 120%;
+}
+
+.article-snippet {
+  margin-bottom: 4em;
+}
+.action  {
+  display: block;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 8px;
+  margin: 5px -7px 5px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.action.ripple  {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  float: right;
+  white-space: nowrap;
+  margin: 0.5em 0.5em;
+}
+
+.footer-link {
+  color: var(--accent-color)
+}
+
+.sidebar-button {
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  padding: 0.6rem;
+  top: 0.6rem;
+  left: 1rem;
+  cursor: pointer;.icon {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .sidebar-button {
+    display: block;
+  }
+}
+
+.icon {
+  display: inline-block;
+}
+
+.icon.outbound {
+  color: var(--icon-outbound-color);
+  
+}
+
+
+.series {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  background-color: var(--series-outbound-bg-color);
+  border-radius: 3px;
+
+  h3, p {
+    padding-left: 1em;
+  }
+
+  h3 {
+    padding-top: 0.5em;
+    margin-bottom: 0;
+  }
+
+  p  {
+    margin-top: 0.5em;
+  }
+
+  ol {
+    padding-left: 3em;
+    padding-bottom: 0.5em;
+  }
+}
