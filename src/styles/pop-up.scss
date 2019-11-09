@@ -1,4 +1,6 @@
-@import './config.scss';.sw-update-popup {
+@import './config.scss';
+
+.sw-update-popup {
   display: flex;
   position: fixed;
   left: 0;
@@ -6,7 +8,7 @@
   padding: 0.65em;
   border: none;
   border-radius: 0px;
-  background: var(--code-bg-color);
+  background: var(--pop-up-bg-color);
   box-shadow: 0 4px 16px var(--pop-up-shadow-color);
   cursor: pointer;
   min-width: 100%;
@@ -18,7 +20,7 @@
   }
 
   p {
-    color: var(--inverse-text-color);
+    color: var(--pop-up-color);
     margin: 0 0;
     padding-left: 0.2em;
     white-space: nowrap;

@@ -7,7 +7,7 @@ $borderColor: #eaecef;
   --accent-color-lighter: #{lighten($accentColor, 8%)};
   --accent-color-lighter-2: #{lighten($accentColor, 16%)};
 
-  --text-color: $textColor;
+  --text-color: #{$textColor};
   --text-color-lighter: #{lighten($textColor, 8%)};
   --text-color-lighter-2: #{lighten($textColor, 16%)};
   --text-color-lighter-3: #{lighten($textColor, 25%)};
@@ -18,9 +18,7 @@ $borderColor: #eaecef;
 
   --bg-color: #ffffff;
   --bg-color-darker: #{darken(#ffffff, 8%)};
-  
-  --inverse-text-color: #ffffff;
-  
+    
   --date-text-color: #777777;
   --time-color: #aaa;
   
@@ -36,6 +34,9 @@ $borderColor: #eaecef;
   --code-highlighted-color: rgba(0, 0, 0, 66%);
   --code-title-color: rgba(255, 255, 255, 0.4);
   --code-number-color: rgba(255, 255, 255, 0.3);
+  
+  --pop-up-color: #ffffff;
+  --pop-up-bg-color: #282c34;
   --pop-up-shadow-color: rgba(0, 0, 0, 0.5);
   
   --block-quote-color: #999;
@@ -83,6 +84,9 @@ $borderColor: #eaecef;
     --code-highlighted-color: #{darken(invert(rgba(0, 0, 0, 66%)), 20%)};
     --code-title-color: rgba(0, 0, 0, 0.4);
     --code-number-color: rgba(0, 0, 0, 0.3);
+
+    --pop-up-color: var(--text-color);
+    --pop-up-bg-color: #000000;
     --pop-up-shadow-color: #{darken(invert(rgba(0, 0, 0, 0.5)), 20%)};
   
     --block-quote-color: #{invert(#999)};
