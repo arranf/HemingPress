@@ -25,18 +25,3 @@ workbox.routing.registerRoute(
       plugins: [new workbox.expiration.Plugin({ "maxEntries": 10, "purgeOnQuotaError": false })]
     }),
   'GET');
-
-addEventListener('message', event => {
-  const replyPort = event.ports[0]
-  const message = event.data
-  console.log('Received message');
-  if (replyPort && message && message.type === 'skip-waiting') {
-    console.log('Received skip-waiting event')
-    event.waitUntil(
-      self.skipWaiting().then(
-        () => replyPort.postMessage({ error: null }),
-        error => replyPort.postMessage({ error })
-      )
-    )
-  }
-})

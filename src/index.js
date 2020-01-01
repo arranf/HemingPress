@@ -2,7 +2,6 @@
 import './styles/theme.scss';
 
 import { register } from 'register-service-worker'
-import SWUpdateEvent from './js/SWUpdateEvent'
 
 import('./js/sidebar')
 import('./js/SearchBox');
@@ -49,12 +48,6 @@ function registerSW() {
             console.debug('New content is downloading.')
         },
         updated(registration) {
-            const updateEvent = new SWUpdateEvent(registration);
-            import('./js/PopUp')
-                .then(module => {
-                    const renderPopUp = module.default;
-                    renderPopUp(updateEvent);
-                })
             console.debug('New content is available; please refresh.')
         },
         offline() {

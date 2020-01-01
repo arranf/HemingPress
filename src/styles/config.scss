@@ -34,10 +34,7 @@ $borderColor: #eaecef;
   --code-highlighted-color: rgba(0, 0, 0, 66%);
   --code-title-color: rgba(255, 255, 255, 0.4);
   --code-number-color: rgba(255, 255, 255, 0.3);
-  
-  --pop-up-color: #ffffff;
-  --pop-up-bg-color: #282c34;
-  --pop-up-shadow-color: rgba(0, 0, 0, 0.5);
+
   
   --block-quote-color: #999;
   --block-quote-border-color: #dfe2e5;
@@ -82,10 +79,6 @@ $borderColor: #eaecef;
     --code-highlighted-color: #{darken(invert(rgba(0, 0, 0, 66%)), 20%)};
     --code-title-color: rgba(0, 0, 0, 0.4);
     --code-number-color: rgba(0, 0, 0, 0.3);
-
-    --pop-up-color: var(--text-color);
-    --pop-up-bg-color: #000000;
-    --pop-up-shadow-color: #{darken(invert(rgba(0, 0, 0, 0.5)), 20%)};
   
     --block-quote-color: #{invert(#999)};
     --block-quote-border-color: #{invert(#dfe2e5)};
