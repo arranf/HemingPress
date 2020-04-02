@@ -42,8 +42,8 @@ div[class*="language-"] {
       background-color: var(--code-highlighted-color);
     }
   }
-
-  pre, pre[class*="language-"] {
+  
+  pre[class*="language-"] {
     background: transparent;
     position: relative;
     z-index: 1;
