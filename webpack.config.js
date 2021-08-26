@@ -7,73 +7,68 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 
-module.exports = (env, argv) => {
+module.exports = (_env, _argv) => {
   return {
     watchOptions: {
-      ignored: ["/node_modules/"]
+      ignored: ["/node_modules/"],
     },
     entry: {
-      main: path.join(__dirname, "src", "index.js")
+      main: path.join(__dirname, "src", "index.js"),
     },
     optimization: {
-      minimizer: [new TerserJSPlugin({
-        extractComments: false,
-        terserOptions: {
-          output: {
-            comments: false,
+      minimizer: [
+        new TerserJSPlugin({
+          extractComments: false,
+          terserOptions: {
+            output: {
+              comments: false,
+            },
           },
-        },
-      }), new OptimizeCSSAssetsPlugin({})],
+        }),
+        new OptimizeCSSAssetsPlugin({}),
+      ],
     },
     output: {
       filename: "[name].[contenthash].js",
       chunkFilename: "[id].[contenthash].js",
       path: path.resolve(__dirname, "static"),
-      publicPath: '/'
+      publicPath: "/",
     },
     module: {
       rules: [
         {
           test: /\.css?$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'postcss-loader'
-          ]
+          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
         },
         {
           test: /\.scss$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader',
-          ]
+          use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         },
         {
           test: /\.js$/,
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
+            presets: ["@babel/preset-env"],
+          },
         },
         {
           test: /\.(svg)$/,
           use: [
             {
-              loader: 'svg-url-loader',
+              loader: "svg-url-loader",
               options: {
                 noquotes: true,
               },
             },
           ],
-        }
-      ]
+        },
+      ],
     },
     plugins: [
       // Move CSS from JS into it's own CSS bundle
       new MiniCssExtractPlugin({
         filename: "[name].[contenthash].css",
-        chunkFilename: "[id].[contenthash].css"
+        chunkFilename: "[id].[contenthash].css",
       }),
       // Outputs file in a JSON format readable by Hugo
       new AssetsPlugin({
@@ -81,20 +76,20 @@ module.exports = (env, argv) => {
         path: path.join(__dirname, "data"),
         prettyPrint: true,
         includeAllFileTypes: false,
-        fileTypes: ['js', 'css']
+        fileTypes: ["js", "css"],
       }),
-      new CopyWebpackPlugin(
-        [
+      new CopyWebpackPlugin({
+        patterns: [
           {
             from: "./src/svg/",
-            to: "./svg"
+            to: "./svg",
           },
           {
             from: "./src/sw.js",
-            to: "sw.js"
-          }
-        ]
-      )
-    ]
+            to: "sw.js",
+          },
+        ],
+      }),
+    ],
   };
 };
