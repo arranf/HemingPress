@@ -1,0 +1,15 @@
+.alert-container {
+    padding: 1rem;
+    border: 0;
+    border-left-width: 4px;
+    border-left-color: rgb(201, 222, 250);
+    background-color: rgb(239, 246, 255);
+    border-style: solid;
+    
+    p {
+        margin-left: .75rem;
+        font-size: .875rem;
+        line-height: 1.25rem;
+        color: rgb(48, 123, 221);
+    }
+}

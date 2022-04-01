@@ -12,6 +12,9 @@
 
 @import './utility';
 
+@import './stripe';
+@import './alert';
+
 html, body {
   padding: 0;
   margin: 0;

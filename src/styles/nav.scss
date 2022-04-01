@@ -1,20 +1,27 @@
 $navbar-vertical-padding: 0.7rem;
-$navbar-horizontal-padding: 1.5rem;.navbar {
+$navbar-horizontal-padding: 1.5rem;
+
+.navbar {
   padding: $navbar-vertical-padding $navbar-horizontal-padding;
   line-height: $navbarHeight - 1.4rem;
-  a, span, img {
+  a,
+  span,
+  img {
     display: inline-block;
-  }.logo {
+  }
+  .logo {
     height: $navbarHeight - 1.4rem;
     min-width: $navbarHeight - 1.4rem;
     margin-right: 0.8rem;
     vertical-align: top;
-  }.site-name {
+  }
+  .site-name {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--text-color);
     position: relative;
-  }.links {
+  }
+  .links {
     padding-left: 1.5rem;
     box-sizing: border-box;
     background-color: var(--bg-color);
@@ -23,7 +30,8 @@ $navbar-horizontal-padding: 1.5rem;.navbar {
     position: absolute;
     right: $navbar-horizontal-padding;
     top: $navbar-vertical-padding;
-    display: flex;.search-box {
+    display: flex;
+    .search-box {
       flex: 0 0 auto;
       vertical-align: top;
     }
@@ -31,47 +39,59 @@ $navbar-horizontal-padding: 1.5rem;.navbar {
 }
 @media (max-width: $MQMobile) {
   .navbar {
-    padding-left: 4rem;.can-hide {
+    padding-left: 4rem;
+    .can-hide {
       display: none;
-    }.links {
+    }
+    .links {
       padding-left: 1.5rem;
     }
   }
 }
 
+@import "./config.scss";
 
-@import './config.scss';.nav-links {
+.nav-links {
   display: inline-block;
   a {
     line-height: 1.4rem;
-    color: inherit;&:hover, &.router-link-active {
+    color: inherit;
+    &:hover,
+    &.router-link-active {
       color: var(--accent-color);
     }
-  }.nav-item {
+  }
+  .nav-item {
     position: relative;
     display: inline-block;
     margin-left: 1.5rem;
-    line-height: 2rem;&:first-child {
+    line-height: 2rem;
+    &:first-child {
       margin-left: 0;
     }
-  }.repo-link {
+  }
+  .repo-link {
     margin-left: 1.5rem;
   }
 }
 @media (max-width: $MQMobile) {
   .nav-links {
-    .nav-item, .repo-link {
+    .nav-item,
+    .repo-link {
       margin-left: 0;
     }
   }
 }
 @media (min-width: $MQMobile) {
   .nav-links a {
-    &:hover, &.router-link-active {
+    &:hover,
+    &.router-link-active {
       color: var(--text-color);
     }
-  }.nav-item > a:not(.external) {
-    &:hover, &.router-link-active {
+  }
+  .nav-item > a:not(.external) {
+    &:hover,
+    &.router-link-active {
       margin-bottom: -2px;
       border-bottom: 2px solid var(--accent-color-lighter);
     }
