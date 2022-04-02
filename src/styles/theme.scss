@@ -24,9 +24,19 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--text-color);
   background-color: var(--bg-color);
+}
+
+// First level li
+ul > li {
+  margin-bottom: 0.5rem;
+}
+
+// Nested li
+li ul > li {
+  margin-bottom: 0.25rem;
 }
 
 .page {
