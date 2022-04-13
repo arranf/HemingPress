@@ -1,7 +1,7 @@
 <div class="page-edit">
   <div class="edit-link">
     {{ range .Site.Params.social }}
-    <a class="footer-link" href="{{ .url }}">
+    <a class="footer-link" rel="me" href="{{ .url }}">
       <svg width="24px" height="24px">
         <use xlink:href="/svg/{{ .type  }}.svg#{{ .type }}"></use>
       </svg>

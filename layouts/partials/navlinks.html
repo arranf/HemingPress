@@ -1,7 +1,7 @@
 <nav class="nav-links can-hide">
     {{ range .Site.Params.social }}
     <div class="nav-item">
-        <a class="nav-link external" target="_blank" rel="noopener noreferrer" href="{{ .url }}  ">
+        <a class="nav-link external" target="_blank" rel="noopener noreferrer me" href="{{ .url }}  ">
             {{.name}}
             <!-- https://github.com/vuejs/vuepress/blob/0a7d85b56e431738969cbf3f4ec9f3a561614ef8/packages/%40vuepress/core/lib/app/components/OutboundLink.vue -->
             <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 100 100"
