@@ -1,14 +1,18 @@
 {{ partial "header" . }}
 <div class="theme-container no-sidebar">
     {{ partial "nav" . }}
-    <section class="page">
+    <section class="page h-entry">
         <div class="content">
-            <h1 class="title">{{ .Title }}</h1>
-            <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
+            <h1 class="title p-name">{{ .Title }}</h1>
+            <span class="date dt-published">{{ .PublishDate.Format "January 2, 2006" }}</span>
+            {{ $url := getenv (cond (eq "production" (getenv "CONTEXT")) "URL" "DEPLOY_PRIME_URL" ) | default (cond (eq "//localhost:1313" (printf "%s" $.Site.BaseURL)) "//localhost:1313" $.Site.BaseURL) }}
+            <span class="hidden u-url">{{ $url }}{{ .RelPermalink }}</span>
+            <span class="hidden p-summary">{{ .Summary }}</span>
             {{ partial "series" . }}
 
-            {{ .Content }}
-
+            <div class="e-content">
+                {{ .Content }}
+            </div>
 
             {{ partial "related" . }}
         </div>
