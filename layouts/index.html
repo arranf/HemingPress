@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}" {{ end }}>
 {{ partial "header" . }}
+<body>
 <div class="theme-container no-sidebar">
   {{ partial "nav" . }}
 
@@ -23,3 +26,5 @@
   </div>
 </div>
 {{ partial "stripe" .}}
+</body>
+</html>
