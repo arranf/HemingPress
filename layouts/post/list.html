@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}" {{ end }}>
+{{ partial "header" . }}
+<body>
+<div class="theme-container no-sidebar">
+  <div class="content">
+    <h1>404</h1>
+    <blockquote>This is not the page you're looking for.</blockquote>
+    <a href="{{ .Site.BaseURL }}">Take me home.</a>
+  </div>
+</div>
+</body>
+</html>
