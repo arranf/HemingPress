@@ -27,6 +27,7 @@ body {
   font-size: 18px;
   color: var(--text-color);
   background-color: var(--bg-color);
+  :target { scroll-margin-top: $navbarHeight; } // Offset the navbar when linked to an anchor
 }
 
 // First level li
