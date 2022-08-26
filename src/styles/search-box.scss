@@ -19,6 +19,7 @@
     transition: all 0.2s ease;
     background: var(--bg-color) url('../svg/search.svg') 0.6rem 0.5rem no-repeat;
     background-size: 1rem;
+    margin-bottom: 8px;
     
     &:focus  {
       cursor: auto;
@@ -64,30 +65,33 @@
       }
     }
   }
+
+  .icon {
+    display: none;
+  }
 }
-
-
-
-
 
 @media (max-width: $MQNarrow) {
   .search-box  {
     input  {
       cursor: pointer;
-      width: 0;
+      left: 0;
+      width: 10rem;
       border-color: transparent;
-      position: relative;&:focus  {
+      position: relative;
+      display: none;
+      
+      &:focus  {
         cursor: text;
-        left: 0;
-        width: 10rem;
       }
+    }
+
+    .icon {
+      display: inline-block;
+      margin-top: 8px;
     }
   }
 }
-
-
-
-
 
 @media (max-width: $MQNarrow) and (min-width: $MQMobile) {
   .search-box  {
@@ -97,16 +101,15 @@
   }
 }
 
-
-
-
 @media (max-width: $MQMobile) {
   .search-box  {
     margin-right: 0;
 
     input  {
       left: 1rem;
-    }.suggestions  {
+    }
+    
+    .suggestions  {
       right: 0;
     }
   }
@@ -119,12 +122,6 @@
   .search-box  {
     .suggestions  {
       width: calc(100vw - 4rem);
-    }
-
-    input  {
-      &:focus  {
-        width: 8rem;
-      }
     }
   }
 }

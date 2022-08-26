@@ -15,6 +15,9 @@ git clone https://github.com/arranf/hemingpress.git
 ## Configuration
 To be documented.
 
+## Icons
+Icons are unknown - possibly Feather icons.
+
 ## Build
 ```
 yarn install

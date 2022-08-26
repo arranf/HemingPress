@@ -4,7 +4,7 @@ import './styles/theme.scss';
 import { register } from 'register-service-worker'
 
 import('./js/sidebar')
-import('./js/SearchBox');
+import('./js/search-box');
 
 // Use native lazy image loading if possible, else use lazysizes.
 if ('loading' in HTMLImageElement.prototype) {

@@ -21,7 +21,6 @@ function shouldShowSuggestions() {
 }
 
 const renderNewDom = (newSuggestions) => {
-  console.log(newSuggestions);
   // If we don't need to update the suggestions, use what's in state.
   if (!newSuggestions) {
     newSuggestions = state.suggestions;
@@ -134,6 +133,11 @@ const onInput = (event) => {
 
 const onBlur = () => {
   state.isFocused = false;
+  const searchBox = document.getElementById("search-box");
+  searchBox.classList.remove('show')
+  
+  const searchBoxIcon = document.getElementById("search-box-icon");
+  searchBoxIcon.classList.remove('hidden');
 };
 
 const onFocus = () => {
@@ -199,6 +203,14 @@ const setUpEventListeners = () => {
   searchBox.onfocus = onFocus;
   searchBox.onblur = onBlur;
   searchBox.addEventListener("keyup", keyHandler);
+
+
+  const searchBoxIcon = document.getElementById("search-box-icon");
+  searchBoxIcon.onclick = () => {
+    searchBox.classList.add('show');
+    searchBoxIcon.classList.add('hidden');
+    searchBox.focus();
+  }
 
   // Suggestions Listeners
   const searchBoxSuggestions = document.getElementById(
