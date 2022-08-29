@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "lazysizes": "^5.3.2",
-    "meilisearch": "^0.27.0",
-    "register-service-worker": "^1.7.2"
+    "meilisearch": "^0.27.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
@@ -19,7 +18,7 @@
     "assets-webpack-plugin": "^7.1.1",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
-    "caniuse-lite": "^1.0.30001382",
+    "caniuse-lite": "^1.0.30001384",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.1",

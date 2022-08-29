@@ -84,10 +84,6 @@ module.exports = (_env, _argv) => {
             from: "./src/svg/",
             to: "./svg",
           },
-          {
-            from: "./src/sw.js",
-            to: "sw.js",
-          },
         ],
       }),
     ],
