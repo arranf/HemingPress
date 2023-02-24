@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "lazysizes": "^5.3.2",
+    "medium-zoom": "^1.0.8",
     "meilisearch": "^0.31.1"
   },
   "devDependencies": {
