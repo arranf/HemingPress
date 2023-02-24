@@ -3,7 +3,7 @@ const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
 
 const client = new MeiliSearch({
   host: "https://search.arranfrance.com", //TODO: Make this config
-  apiKey: "5695ad690a9ff00494a4305769df1d8cc0f3d3d31cb374b78c28ffae572dcee1", // This is okay to be public
+  apiKey: "9ced724c60b21d170a222c692cceb7716133e6e0eb100a6532c4ae4f00a89cc0", // This is okay to be public
 });
 
 const index = client.index("blog");
