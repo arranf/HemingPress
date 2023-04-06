@@ -15,7 +15,7 @@
         <div>
           {{ .Summary | plainify | safeHTML }}
         </div>
-        {{ if .Truncated }}
+        {{ if or .Truncated .Params.summary }}
         <a class="action ripple" href="{{ .RelPermalink }}">Read more</a>
         {{ end }}
       </article>
