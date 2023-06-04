@@ -1,7 +1,7 @@
 {{ $series := $.Page.Params.series}}
 {{ if $series }}
 <div class="series">
-    <h3>{{$series | humanize}} Series</h3>
+    <h3>{{replace $series "-" " " | title}} Series</h3>
     <ol>
         {{ range $ind,$post := $.Site.Pages.ByDate}}
         {{ if eq $post.Params.series $series }}
