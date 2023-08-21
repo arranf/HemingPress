@@ -2,8 +2,8 @@ import { MeiliSearch } from "meilisearch";
 const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
 
 const client = new MeiliSearch({
-  host: "https://search.arranfrance.com", //TODO: Make this config
-  apiKey: "9ced724c60b21d170a222c692cceb7716133e6e0eb100a6532c4ae4f00a89cc0", // This is okay to be public
+  host: window.location.origin,
+  apiKey: "9ced724c60b21d170a222c692cceb7716133e6e0eb100a6532c4ae4f00a89cc0", // This is okay to be public. TODO: Make this an environment variable to make it configurable.
 });
 
 const index = client.index("blog");
