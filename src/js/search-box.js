@@ -2,7 +2,7 @@ import { MeiliSearch } from "meilisearch";
 const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
 
 const client = new MeiliSearch({
-  host: window.location.origin,
+  host: "https://search.arranfrance.com", // TODO: Make this an environment variable to make it configurable
   apiKey: "9ced724c60b21d170a222c692cceb7716133e6e0eb100a6532c4ae4f00a89cc0", // This is okay to be public. TODO: Make this an environment variable to make it configurable.
 });
 
@@ -36,8 +36,12 @@ const renderNewDom = (newSuggestions) => {
     return;
   }
 
-  const newDomNodes = suggestionsToDomNodes(newSuggestions);
-  state.suggestions = newSuggestions;
+  state.suggestions = newSuggestions.map((s) => ({
+    ...s,
+    permalink: `${origin}${new URL(s.permalink).pathname}`,
+  }));
+  console.log(state.suggestions);
+  const newDomNodes = suggestionsToDomNodes(state.suggestions);
 
   // Remove what's there
   let child;
@@ -96,11 +100,7 @@ const getSuggestions = async (input) => {
 
   const results = await index.search(query);
 
-  return (
-    results.hits
-      // Take 5 suggestions
-      .filter((i, index) => index < 5)
-  );
+  return results.hits.slice(0, 5);
 };
 
 // Suggestions Handlers

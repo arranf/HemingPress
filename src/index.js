@@ -3,6 +3,7 @@ import './styles/theme.scss';
 
 import("./js/sidebar");
 import("./js/search-box");
+
 import mediumZoom from "medium-zoom";
 
 // Use native lazy image loading if possible, else use lazysizes.
