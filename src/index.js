@@ -4,7 +4,7 @@ import './styles/theme.scss';
 import("./js/sidebar");
 import("./js/search-box");
 
-import mediumZoom from "medium-zoom";
+import { listen } from "zoom.ts";
 
 // Use native lazy image loading if possible, else use lazysizes.
 if ("loading" in HTMLImageElement.prototype) {
@@ -20,15 +20,19 @@ if ("loading" in HTMLImageElement.prototype) {
   images.forEach((img) => {
     img.srcset = img.dataset.srcset;
   });
+
+  listen();
 } else {
   console.debug("Native lazy loading not enabled");
 
   // Dynamically import the LazySizes library.
   // Initiate LazySizes (reads data-srcset, data-src, and class=lazyload).
-  import("lazysizes").then((lazySizes) => lazySizes.init());
+  import("lazysizes").then((lazySizes) => {
+    lazySizes.init();
+    document.addEventListener("lazybeforeunveil", (e) => listen());
+  });
 }
 
-mediumZoom("[data-zoomable]");
 
 if ("serviceWorker" in window.navigator) {
   navigator.serviceWorker.getRegistrations().then(function (registrations) {

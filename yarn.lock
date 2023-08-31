@@ -2883,11 +2883,6 @@ mdn-data@2.0.14:
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
   integrity sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==
 
-medium-zoom@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/medium-zoom/-/medium-zoom-1.0.8.tgz#2bd1fbcf2961fa7b0e318fe284462aa9b8608ed2"
-  integrity sha512-CjFVuFq/IfrdqesAXfg+hzlDKu6A2n80ZIq0Kl9kWjoHh9j1N9Uvk5X0/MmN0hOfm5F9YBswlClhcwnmtwz7gA==
-
 meilisearch@^0.34.1:
   version "0.34.1"
   resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.34.1.tgz#9d003a81280a95394e52e2116e8244e3bca54555"
@@ -4581,3 +4576,8 @@ yocto-queue@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.0.0.tgz#7f816433fb2cbc511ec8bf7d263c3b58a1a3c251"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
+
+zoom.ts@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/zoom.ts/-/zoom.ts-8.0.0.tgz#a792af6b0af6c6a9e4b5394eff02ed937d296e66"
+  integrity sha512-ZnvIx610+Yfd7CTt1GfNg77vzzPYmsbO9Srbvue7m3aPrbQhYhKOO0REfXdxp7wIv9uKboJgUsHBfgHj5zr9BQ==
