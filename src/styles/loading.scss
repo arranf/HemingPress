@@ -1,9 +1,13 @@
-@import './config';.sp {
+@import './config';
+
+.sp {
   width: 2em;
   height: 2em;
   clear: both;
   margin: 0 1em;
-}.sp-hydrogen  {
+}
+
+.sp-hydrogen  {
   position: relative;
   border: 1px var(--accent-color) solid;
   border-radius: 50%;
