@@ -22,7 +22,7 @@ $code-universal-bg: #272822;
   --bg-color-darker: #{darken(#ffffff, 8%)};
     
   --date-text-color: #777777;
-  --time-color: #aaa;
+  --last-update-text-color: #aaa;
   
   --icon-outbound-color: #aaa;
   --series-outbound-bg-color: #f6f5f5;
@@ -44,50 +44,50 @@ $code-universal-bg: #272822;
   --table-stripe-bg-color: #f6f8fa;
 }
 
-// @media (prefers-color-scheme: dark) {
-//   $textColor: darken(#ffffff, 25%);
-//   $accentColor: #3eaf7c;
-//   $borderColor: invert(#eaecef);
+@media (prefers-color-scheme: dark) {
+  $textColor: #c2c2c7;
+  $accentColor: #2e835d;
+  $borderColor: #4d4e57;
 
-//   :root {
-//     --accent-color: #{$accentColor};
-//     --accent-color-lighter: #{darken($accentColor, 8%)};
-//     --accent-color-lighter-2: #{darken($accentColor, 16%)};
+  :root {
+    --accent-color: #{$accentColor};
+    --accent-color-lighter: #{darken($accentColor, 8%)};
+    --accent-color-lighter-2: #{darken($accentColor, 12%)};
 
-//     --text-color: #{$textColor};
-//     --text-color-lighter: #{darken($textColor, 8%)};
-//     --text-color-lighter-2: #{darken($textColor, 16%)};
-//     --text-color-lighter-3: #{darken($textColor, 25%)};
-//     --text-color-lighter-4: #{darken($textColor, 33%)};
+    --text-color: #{$textColor};
+    --text-color-lighter: #{darken($textColor, 8%)};
+    --text-color-lighter-2: #{darken($textColor, 12%)};
+    --text-color-lighter-3: #{darken($textColor, 17%)};
+    --text-color-lighter-4: #{darken($textColor, 21%)};
 
-//     --border-color: #{$borderColor};
-//     --border-color-darker: #{lighten($borderColor, 10%)};
+    --border-color: #{$borderColor};
+    --border-color-darker: #{lighten($borderColor, 10%)};
     
-//     --bg-color: #000000;
-//     --bg-color-darker: #{lighten(#000000, 10%)};
+    --bg-color: #1d1f24;
+    --bg-color-darker: #{#17191d};
   
-//     --date-text-color: #{invert(#777777)};
-//     --time-color: #{invert(#aaa)};
+    --date-text-color: #{#858383};
+    --last-update-text-color: #{#d1d1d1};
   
-//     --icon-outbound-color: #{invert(#aaa)};
-//     --series-outbound-bg-color: #{invert(#f6f5f5)};
+    --icon-outbound-color: #{invert(#aaa)};
+    --series-outbound-bg-color: #{invert(#f6f5f5)};
   
-//     --arrow-bg-color: #{invert(#ccc)};
+    --arrow-bg-color: #{invert(#ccc)};
   
-//     --code-bg-color: #{$code-universal-bg};
-//     --code-color: #{$textColor};
-//     --inline-code-bg-color: #{invert(rgba(27, 31, 35, 0.95))};
-//     --inline-code-color: #{darken(invert($textColor), 20%)};
-//     --code-highlighted-color: #{darken(invert(rgba(0, 0, 0, 66%)), 20%)};
-//     --code-title-color: rgba(0, 0, 0, 0.4);
-//     --code-number-color: rgba(0, 0, 0, 0.3);
+    --code-bg-color: #{$code-universal-bg};
+    --code-color: #{$textColor};
+    --inline-code-bg-color: #{invert(rgba(27, 31, 35, 0.95))};
+    --inline-code-color: #{darken(invert($textColor), 20%)};
+    --code-highlighted-color: #{darken(invert(rgba(0, 0, 0, 66%)), 20%)};
+    --code-title-color: rgba(0, 0, 0, 0.4);
+    --code-number-color: rgba(0, 0, 0, 0.3);
   
-//     --block-quote-color: #{invert(#999)};
-//     --block-quote-border-color: #{invert(#dfe2e5)};
+    --block-quote-color: #{invert(#999)};
+    --block-quote-border-color: #{invert(#dfe2e5)};
   
-//     --table-stripe-bg-color: #{invert(#f6f8fa)};
-//   }
-// }
+    --table-stripe-bg-color: #{invert(#f6f8fa)};
+  }
+}
 
 $navbarHeight: 3.6rem;
 $sidebarWidth: 20rem;
