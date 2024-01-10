@@ -146,6 +146,14 @@ li ul > li {
     margin-left: auto;
     margin-right: auto;
   }
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    // font-size: 1rem;
+  }
 }
 
 a {
@@ -185,17 +193,23 @@ strong {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  line-height: 1.25;.content > & {
+  line-height: 1.25;
+  
+  .content > & {
     margin-top: 0.5rem - $navbarHeight;
     padding-top: $navbarHeight + 1rem;
-    margin-bottom: 0;&:first-child {
+    margin-bottom: 0;
+    
+    &:first-child {
       margin-top: -1.5rem;
       margin-bottom: 1rem;
       + p, + pre {
         margin-top: 2rem;
       }
     }
-  }&:hover .header-anchor {
+  }
+  
+  &:hover .header-anchor {
     opacity: 1;
   }
 }
@@ -207,6 +221,7 @@ h1 {
 h2 {
   font-size: 1.65rem;
   padding-bottom: 0.3rem;
+  padding-top: 0.8rem;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -237,7 +252,7 @@ figcaption {
 }
 
 p, ul, ol {
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 hr {
