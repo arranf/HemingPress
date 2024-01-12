@@ -4,13 +4,13 @@
 <body>
 <div class="theme-container no-sidebar">
     {{ partial "nav" . }}
-    <section class="page h-entry">
+    <section class="page">
         <div class="content">
-            <h1 class="title p-name">{{ .Title }}</h1>
-            <span class="date dt-published">{{ .PublishDate.Format "January 2, 2006" }}</span>
-            {{ $url := getenv (cond (eq "production" (getenv "CONTEXT")) "URL" "DEPLOY_PRIME_URL" ) | default (cond (eq "//localhost:1313" (printf "%s" $.Site.BaseURL)) "//localhost:1313" $.Site.BaseURL) }}
-            <span class="hidden u-url">{{ $url }}{{ .RelPermalink }}</span>
-            <span class="hidden p-summary">{{ .Summary }}</span>
+            <h1 class="title">{{ .Title }}</h1>
+            <div>
+                <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
+                <span class="reading-time">{{ .ReadingTime}} min read</span>
+            </div>
             {{ partial "series" . }}
 
             <div class="e-content">
