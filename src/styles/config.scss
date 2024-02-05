@@ -42,6 +42,10 @@ $code-universal-bg: #272822;
   --block-quote-border-color: #dfe2e5;
   
   --table-stripe-bg-color: #f6f8fa;
+
+  --alert: rgb(48, 123, 221);
+  --alert-bg-color: rgb(239, 246, 255);
+  --alert-border-color: rgb(201, 222, 250);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +90,10 @@ $code-universal-bg: #272822;
     --block-quote-border-color: #{invert(#dfe2e5)};
   
     --table-stripe-bg-color: #{invert(#f6f8fa)};
+
+    --alert: #b5bcc6;
+    --alert-bg-color: #1b3a68;
+    --alert-border-color: rgb(64, 71, 81);
   }
 }
 
