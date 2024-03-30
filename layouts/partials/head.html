@@ -1,6 +1,5 @@
 {{ $url := getenv (cond (eq "production" (getenv "CONTEXT")) "URL" "DEPLOY_PRIME_URL" ) | default (cond (eq "//localhost:1313" (printf "%s" $.Site.BaseURL)) "//localhost:1313" $.Site.BaseURL) }}
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
@@ -12,8 +11,9 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+
   {{ if .Description }}
-  <meta name="description" content="{{ .Description }}"/>
+    <meta name="description" content="{{ .Description }}"/>
   {{ end }}
   <meta property="og:url" content="{{ $url }}{{ .RelPermalink }}" />
   <meta property="og:type" content="website" />

@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html{{ with .Site.LanguageCode }} lang="{{ . }}" {{ end }}>
-{{ partial "header" . }}
-<body>
-<div class="theme-container no-sidebar">
-  {{ partial "nav" . }}
-  <section class="page">
-    <div class="content">
+{{ define "main" }}
+  <div class="content">
       <h1 class="title">{{ .Title }}</h1>
-      <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
+      <div>
+        <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
+        <span class="reading-time">{{ .ReadingTime}} min read</span>
+      </div>
+      {{ partial "series" . }}
 
       {{ .Content }}
-
+      
       {{ partial "related" . }}
-    </div>
-    {{ partial "footer" . }}
-  </section>
-</div>
-</body>
-</html>
+  </div>
+{{ end }}

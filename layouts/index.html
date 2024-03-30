@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html{{ with .Site.LanguageCode }} lang="{{ . }}" {{ end }}>
-  {{ partial "header" . }}
-  <body>
-  <div class="theme-container no-sidebar">
-    {{ partial "nav" . }}
-
-    <div class="page">
-      <div class="content">
-        {{ range where .Paginator.Pages "Section" "post"  }}
-        <article class="article-snippet">
-          <h3 class="title" style="margin-bottom: 0.25em;"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }}
-            ::Draft{{ end }}</h3>
-          <span class="date">{{ .Date.Format "January 2, 2006" }}</span>
-          <div>
-            {{ .Summary | plainify | safeHTML }}
-          </div>
-          {{ if or .Truncated .Params.summary }}
-          <a class="action ripple" href="{{ .RelPermalink }}">Read more</a>
-          {{ end }}
-        </article>
-        {{ end }}
-      </div>
-      {{ partial "pager" . }}
-      {{ partial "footer" . }}
-    </div>
+{{ define "main" }}
+  <div class="content">
+    {{ range .Paginator.Pages }}
+      {{ .Render "summary" }}
+    {{ end }}
   </div>
-  </body>
-</html>
+  {{ partial "pagination" . }}
+{{ end }}
