@@ -4,9 +4,11 @@ import './styles/theme.scss';
 import("./js/sidebar");
 import("./js/search-box");
 
-import { listen } from "zoom.ts";
+import yamz from "yet-another-medium-zoom";
 
 // Use native lazy image loading if possible, else use lazysizes.
+
+const images = document.querySelectorAll("img.lazyload");
 if ("loading" in HTMLImageElement.prototype) {
   console.debug("Native lazy loading enabled");
 
@@ -16,12 +18,10 @@ if ("loading" in HTMLImageElement.prototype) {
     source.srcset = source.dataset.srcset;
   });
 
-  const images = document.querySelectorAll("img.lazyload");
   images.forEach((img) => {
     img.srcset = img.dataset.srcset;
   });
 
-  listen();
 } else {
   console.debug("Native lazy loading not enabled");
 
@@ -29,9 +29,10 @@ if ("loading" in HTMLImageElement.prototype) {
   // Initiate LazySizes (reads data-srcset, data-src, and class=lazyload).
   import("lazysizes").then((lazySizes) => {
     lazySizes.init();
-    document.addEventListener("lazybeforeunveil", (e) => listen());
   });
 }
+console.log(images)
+yamz.bind([...images])
 
 
 if ("serviceWorker" in window.navigator) {

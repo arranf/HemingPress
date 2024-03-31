@@ -15,9 +15,4 @@
     <span class="time dt-updated">{{ .Lastmod.Format "2006-01-02 15:04" }}</span>
   </div>
   {{ end }}
-
-  {{ $script := .Site.Data.webpack.main }}
-  {{ with $script.js }}
-  <script src="{{ relURL . }}" async></script>
-  {{ end }}
 </div>

@@ -1,0 +1,54 @@
+{{ define "main" }}
+  <div class="content">
+      <h1 class="title">{{ .Title }}</h1>
+      <div>
+        <span class="date">{{ .PublishDate.Format "January 2, 2006" }}</span>
+      </div>
+      <div>
+        {{ .Content }}
+      </div>
+    </div>
+      <div class="gallery">
+        {{ $data := .Resources.Get "images.json" | transform.Unmarshal }} 
+        {{ range $.Page.Params.images }}
+            <div class="gallery-image">
+                    {{ range first 1 (where $data "name" .) }}
+                   
+                        <picture class="no-js-hidden">
+                        {{ range .sources}}
+                        <source class="no-js-hidden" media="{{ .media }}" sizes="{{ .sizes }}" {{ with .placeholder }}
+                            srcset="data:image/svg+xml;base64,{{.}}" {{ end }} data-srcset="{{ .srcset }}">
+                        {{ end }}
+                        <img data-proofer-ignore loading="lazy" class="lazyload zoom__image" sizes="{{ .fallback.sizes }}"
+                            data-srcset="{{ .fallback.srcset }}" src="data:image/svg+xml;base64,{{ .fallback.placeholder }}"
+                            alt=""
+                            {{ if .hqimage}}
+                            data-src="{{ .hqimage }}"
+                            data-highres="{{ .hqimage }}"
+                            {{ end }}
+                            >
+                        </picture>
+                        <noscript>
+                        {{ if .hqimage}}
+                        <a href="{{ .hqimage }}" target="_blank">
+                        {{ end }}
+                            <picture>
+                            {{ range .sources}}
+                            <source media="{{ .media }}" sizes="{{ .sizes }}" {{ with .placeholder }}
+                            style="background-size: cover; background-image: url(data:image/svg+xml;base64,{{.}})" {{ end }}
+                            srcset="{{ .srcset }}">
+                            {{ end }}
+                            <img src="{{.fallback.src}}" loading="lazy" sizes="{{ .fallback.sizes }}" srcset="{{ .fallback.srcset }}"
+                            style="background-size: cover; background-image: url(data:image/svg+xml;base64,{{ .fallback.placeholder }})"
+                            alt=""
+                            >
+                            </picture>
+                        {{ if .hqimage}}
+                        </a>
+                        {{ end }}
+                        </noscript>
+                {{ end }}
+            </div>
+                        {{ end }}
+      </div>
+{{ end }}

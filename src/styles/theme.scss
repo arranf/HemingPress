@@ -48,8 +48,7 @@ html:focus-within {
 @import './utility';
 
 @import './alert';
-
-@import '../../node_modules/zoom.ts/style.scss';
+@import './gallery.scss';
 
 html, body {
   padding: 0;
@@ -82,7 +81,6 @@ li ul > li {
 
 .navbar {
   position: fixed;
-  z-index: 20;
   top: 0;
   left: 0;
   right: 0;
@@ -276,12 +274,16 @@ tr {
 th, td {
   border: 1px solid var(--block-quote-border-color);
   padding: 0.6em 1em;
-}.theme-container {
+}
+
+.theme-container {
   &.sidebar-open {
     .sidebar-mask {
       display: block;
     }
-  }&.no-navbar {
+  }
+  
+  &.no-navbar {
     .content > h1, h2, h3, h4, h5, h6 {
       margin-top: 1.5rem;
       padding-top: 0;
@@ -292,11 +294,13 @@ th, td {
 }
 
 
-@media (min-width: $MQMobile + 1px) {
+@media (min-width: ($MQMobile + 1px)) {
   .theme-container.no-sidebar {
     .sidebar {
       display: none;
-    }.page {
+    }
+    
+    .page {
       padding-left: 0;
     }
   }

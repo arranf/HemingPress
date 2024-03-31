@@ -1,0 +1,44 @@
+@import './config.scss';
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 1rem;
+}
+
+.gallery-image {
+    max-height: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img,picture {
+        max-inline-size: 100%;
+        block-size: auto;
+        object-fit: contain;
+        object-position: top center;
+        max-width: 100%;
+        margin: auto;
+    }
+}
+
+@media (max-width: $MQNarrow) and (min-width: ($MQMobile + 1)) {
+    .gallery {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+}
+
+@media (min-width: $MQMobileNarrow) and (max-width: ($MQMobile + 1))  {
+    .gallery {
+        grid-template-columns: 1fr 1fr; 
+        margin: 2.5rem 1.5rem;
+    }
+}
+
+@media (max-width: $MQMobileNarrow)  {
+    .gallery {
+        grid-template-columns: 1fr; 
+        margin: 3rem 1.75rem;
+    }
+}

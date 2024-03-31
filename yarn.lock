@@ -4736,12 +4736,12 @@ yargs@^17.2.1:
     y18n "^5.0.5"
     yargs-parser "^21.0.0"
 
+yet-another-medium-zoom@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/yet-another-medium-zoom/-/yet-another-medium-zoom-0.4.2.tgz#5956b8dc35d41c75258bcb3c5590cc5631ed2921"
+  integrity sha512-UWWul47VnEQiHL4Brnv7WqTexEnmbMetEI8uBfNXWEsK23t8+7aTZw7hcZMRvwIPLyyKI4YPJIUy9ztnGciWKQ==
+
 yocto-queue@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.0.0.tgz#7f816433fb2cbc511ec8bf7d263c3b58a1a3c251"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
-
-zoom.ts@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/zoom.ts/-/zoom.ts-8.0.0.tgz#a792af6b0af6c6a9e4b5394eff02ed937d296e66"
-  integrity sha512-ZnvIx610+Yfd7CTt1GfNg77vzzPYmsbO9Srbvue7m3aPrbQhYhKOO0REfXdxp7wIv9uKboJgUsHBfgHj5zr9BQ==
