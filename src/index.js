@@ -31,7 +31,6 @@ if ("loading" in HTMLImageElement.prototype) {
     lazySizes.init();
   });
 }
-console.log(images)
 yamz.bind([...images])
 
 

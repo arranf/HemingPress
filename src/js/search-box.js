@@ -40,7 +40,6 @@ const renderNewDom = (newSuggestions) => {
     ...s,
     permalink: `${origin}${new URL(s.permalink).pathname}`,
   }));
-  console.log(state.suggestions);
   const newDomNodes = suggestionsToDomNodes(state.suggestions);
 
   // Remove what's there

@@ -22,6 +22,7 @@
                         <img data-proofer-ignore loading="lazy" class="lazyload zoom__image" sizes="{{ .fallback.sizes }}"
                             data-srcset="{{ .fallback.srcset }}" src="data:image/svg+xml;base64,{{ .fallback.placeholder }}"
                             alt=""
+                            data-album="{{ $.Page.Title }}"
                             {{ if .hqimage}}
                             data-src="{{ .hqimage }}"
                             data-highres="{{ .hqimage }}"
