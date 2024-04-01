@@ -10,9 +10,9 @@
     </div>
       <div class="gallery">
         {{ $data := .Resources.Get "images.json" | transform.Unmarshal }} 
-        {{ range $.Page.Params.images }}
-            <div class="gallery-image">
-                    {{ range first 1 (where $data "name" .) }}
+        {{ range $image := $.Page.Params.images }}
+        {{ range first 1 (where $data "name" "eq" $image.name) }}
+                  <div class="gallery-image">
                    
                         <picture class="no-js-hidden">
                         {{ range .sources}}
@@ -26,6 +26,9 @@
                             {{ if .hqimage}}
                             data-src="{{ .hqimage }}"
                             data-highres="{{ .hqimage }}"
+                            {{ end }}
+                            {{ if $image.caption }}
+                            data-caption="{{$image.caption}}"
                             {{ end }}
                             >
                         </picture>
@@ -48,8 +51,8 @@
                         </a>
                         {{ end }}
                         </noscript>
-                {{ end }}
-            </div>
-                        {{ end }}
+                    </div>
+        {{ end }}
+        {{ end }}
       </div>
 {{ end }}
