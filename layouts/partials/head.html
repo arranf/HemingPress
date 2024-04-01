@@ -50,7 +50,9 @@
   {{ with $stylesheet.css }}
   <link href="{{ relURL . }}" rel="stylesheet">
   {{ end }}
-  
+  {{ if eq (getenv "CONTEXT") "production" }}
+    {{ partial "analytics" . }}
+  {{ end }}
   <link rel="manifest" href="/manifest.json">
   <noscript>
     <style>
