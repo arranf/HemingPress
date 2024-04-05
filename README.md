@@ -1,5 +1,8 @@
 # HemingPress
 
+THIS REPOSITORY IS ARCHIVED AS MY NEW BLOG THEME IS TOO SPECIFIC FOR MY NEEDS.
+FEEL FREE TO USE THIS DESPITE IT BEING ARCHIVED.
+
 Hemingway is a minimal Hugo blog theme, based on the skeleton of Hemingway and the 0.x VuePress styles.
 
 ## Getting Started
